@@ -1,0 +1,25 @@
+.navBar {
+    background-color: #373737;
+    width: 100%;
+    height: 50px;
+}
+
+.navBar button {
+    border-color: #414141;
+    background: #4b4b4b;
+    color: ghostwhite;
+    border-radius: 0.5em;
+    height: 40px;
+    width: 150px;
+    margin: 6px;
+}
+
+.navBar a button{
+    float: right;
+}
+
+
+.navBar button:visited, .navBar button:focus, .navBar button:active {
+    background: #3c3c3c;
+    outline: 0;
+}

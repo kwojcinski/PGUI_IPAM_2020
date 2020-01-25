@@ -1,0 +1,27 @@
+.Homepage {
+    width: 100%;
+    height: 100%;
+    padding: 1px 0 20px;
+    text-align: center;
+}
+
+.title {
+    color: cornsilk;
+}
+
+article {
+    width: 50%;
+    border-radius: 2em;
+    background: radial-gradient(lightgrey, dimgrey);
+    opacity: 95%;
+    padding: 15px;
+    margin: 10px auto;
+    text-align: start;
+}
+
+article h3 {
+    text-align: center;
+    margin-top: 5px;
+    border-bottom: solid dimgrey 2px;
+    padding-bottom: 10px;
+}
