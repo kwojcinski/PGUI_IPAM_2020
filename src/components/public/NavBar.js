@@ -18,7 +18,7 @@ const NavBar = () => {
                 <button>Profile</button>
               </Link>
               <Link to="/">
-                <button>Homea</button>
+                <button>Home</button>
               </Link>
             </>
         )}
