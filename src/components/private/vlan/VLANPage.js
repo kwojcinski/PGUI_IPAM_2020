@@ -22,11 +22,21 @@ class VLANPage extends Component {
     });
   };
 
+  getVLANelements = () => {
+    let result = this.database.ref('vlan');
+    result.on("value", snap => {
+      console.log(snap.val());
+    });
+  }
+
   render() {
     return (
         <div>
           <RegisterVLAN handleSubmit={this.addNewVLAN}/>
           <div>Lista dodanych</div>
+          <div>
+            {this.getVLANelements()}
+          </div>
         </div>
     );
   }
