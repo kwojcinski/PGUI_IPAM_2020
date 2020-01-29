@@ -1,12 +1,8 @@
 import React, {Fragment} from "react";
 import {useAuth0} from "../../../react-auth0-spa";
-import PrivateRoute from "../PrivateRoute";
-import DevicePage from "../device/DevicePage";
-import VLANPage from "../vlan/VLANPage";
-import NATPage from "../nat/NATPage";
-import IPNetworkPage from "../ipnetwork/IPNetworkPage";
-import ProfileData from "./ProfileData";
+
 import Menu from "./Menu";
+import Content from "./Content";
 
 const Profile = () => {
   const {loading, user} = useAuth0();
@@ -18,13 +14,7 @@ const Profile = () => {
   return (
       <Fragment>
         <Menu/>
-        <article>
-          <PrivateRoute exact path="/profile" component={ProfileData}/>
-          <PrivateRoute exact path="/profile/Device" component={DevicePage}/>
-          <PrivateRoute exact path="/profile/VLAN" component={VLANPage}/>
-          <PrivateRoute exact path="/profile/IP" component={IPNetworkPage}/>
-          <PrivateRoute exact path="/profile/NAT" component={NATPage}/>
-        </article>
+        <Content/>
       </Fragment>
   );
 };
