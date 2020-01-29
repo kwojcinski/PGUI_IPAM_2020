@@ -1,3 +1,7 @@
+.title {
+    color: cornsilk;
+}
+
 .Homepage {
     width: 100%;
     height: 100%;
@@ -5,11 +9,7 @@
     text-align: center;
 }
 
-.title {
-    color: cornsilk;
-}
-
-article {
+.Homepage article {
     width: 50%;
     border-radius: 2em;
     background: radial-gradient(lightgrey, dimgrey);
@@ -19,7 +19,7 @@ article {
     text-align: start;
 }
 
-article h3 {
+.Homepage article h3 {
     text-align: center;
     margin-top: 5px;
     border-bottom: solid dimgrey 2px;
