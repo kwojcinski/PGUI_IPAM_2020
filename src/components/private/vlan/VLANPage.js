@@ -4,7 +4,6 @@ import firebase from "firebase";
 
 class VLANPage extends Component {
 
-
   constructor(props) {
     super(props);
     this.database = firebase.database();
@@ -22,21 +21,22 @@ class VLANPage extends Component {
     });
   };
 
-  getVLANelements = () => {
-    let result = this.database.ref('vlan');
-    result.on("value", snap => {
-      console.log(snap.val());
+   getVLANelements = () => {
+    return this.database.ref('vlan').once('value').then(snap => {
+      let result = Object.entries(snap.val()).map(el => <li key={el[0]}>{el[1].description}</li>);
+      console.log(result);
+      return result
     });
-  }
+  };
 
   render() {
     return (
         <div>
           <RegisterVLAN handleSubmit={this.addNewVLAN}/>
           <div>Lista dodanych</div>
-          <div>
-            {this.getVLANelements()}
-          </div>
+          <ul>
+            {this.getVLANelements().then( e => e)}
+          </ul>
         </div>
     );
   }
