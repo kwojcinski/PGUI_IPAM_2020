@@ -1,27 +1,37 @@
-import React, { Fragment } from "react";
-import { useAuth0 } from "../../../react-auth0-spa";
+import React, {Component} from 'react';
+import RegisterDevice from "./RegisterDevice";
+import firebase from "firebase";
 
-const DevicePage = () => {
-  const { loading, user } = useAuth0();
+class DevicePage extends Component {
 
-  if (loading || !user) {
-    return <div>Loading...</div>;
+
+  constructor(props) {
+    super(props);
+    this.database = firebase.database();
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target);
-    // const data = new FormData(event.target);
-    
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // });
+  addNewHost = (hostData) => {
+    let host = {};
+    for (let entry of hostData.entries()) {
+      host[entry[0]] = entry[1];
+    }
+    let key = this.database.ref('/host').push(host).key;
+    let result = this.database.ref('host/' + key);
+    result.on("value", snap => {
+      console.log(snap.val());
+    });
   };
 
-  return (
-<div>TUTAJ LISTA</div>
-  );
-};
+  render() {
+    return (
+        <div>
+          <RegisterDevice handleSubmit={this.addNewHost}/>
+          <div>Lista dodanych</div>
+        </div>
+    );
+  }
+
+}
 
 export default DevicePage;
+

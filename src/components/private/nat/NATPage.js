@@ -1,27 +1,37 @@
-import React, { Fragment } from "react";
-import { useAuth0 } from "../../../react-auth0-spa";
+import React, {Component} from 'react';
+import DefineNAT from "./DefineNAT";
+import firebase from "firebase";
 
-const NATPage = () => {
-  const { loading, user } = useAuth0();
+class NATPage extends Component {
 
-  if (loading || !user) {
-    return <div>Loading...</div>;
+
+  constructor(props) {
+    super(props);
+    this.database = firebase.database();
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target);
-    // const data = new FormData(event.target);
-    
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // });
+  addNewNAT = (hostData) => {
+    let host = {};
+    for (let entry of hostData.entries()) {
+      host[entry[0]] = entry[1];
+    }
+    let key = this.database.ref('/vlan').push(host).key;
+    let result = this.database.ref('vlan/' + key);
+    result.on("value", snap => {
+      console.log(snap.val());
+    });
   };
 
-  return (
-<div>TUTAJ LISTA</div>
-  );
-};
+  render() {
+    return (
+        <div>
+          <DefineNAT handleSubmit={this.addNewNAT}/>
+          <div>Lista dodanych</div>
+        </div>
+    );
+  }
+
+}
 
 export default NATPage;
+
