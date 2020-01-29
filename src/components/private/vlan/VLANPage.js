@@ -15,33 +15,34 @@ class VLANPage extends Component {
     for (let entry of hostData.entries()) {
       host[entry[0]] = entry[1];
     }
-    let key = this.database.ref('/vlan').push(host).key;
+    this.database.ref('/vlan').push(host);
+    this.updateVLANList();
+  };
+
+  componentDidMount() {
+    this.updateVLANList();
+  }
+
+  updateVLANList = () => {
     this.database.ref('vlan').once('value').then(snap => {
-      let result = Object.entries(snap.val()).map(el => <li key={el[0]}>{el[1].description}</li>);
-      console.log(result);
+      let result = Object.entries(snap.val()).map(el => (
+          {id: el[0], body: el[1]}
+      ));
       this.setState({
         data: result
       });
     });
   };
 
-  
-componentDidMount(){
-  this.database.ref('vlan').once('value').then(snap => {
-    let result = Object.entries(snap.val()).map(el => <li key={el[0]}>{el[1].description}</li>);
-    console.log(result);
-    this.setState({
-      data: result
-    });
-  });
-}
   render() {
     return (
         <div>
           <RegisterVLAN handleSubmit={this.addNewVLAN}/>
           <div>Lista dodanych</div>
           <ul>
-            {this.state.data}
+            {this.state.data.map(rec =>
+                <li key={rec.id}>{rec.body.description}</li>
+            )}
           </ul>
         </div>
     );
