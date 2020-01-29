@@ -10,13 +10,8 @@ const DefineNAT = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target);
-    // const data = new FormData(event.target);
-    
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // });
+    const data = new FormData(event.target);
+    props.handleSubmit(data);
   };
 
   return (

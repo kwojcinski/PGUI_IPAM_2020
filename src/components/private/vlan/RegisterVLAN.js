@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { useAuth0 } from "../../../react-auth0-spa";
-import firebase from "firebase";
 
 
 const RegisterVLAN = (props) => {
@@ -18,9 +17,6 @@ const RegisterVLAN = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-        <label htmlFor="id">ID</label>
-        <input id="id" name="id" type="text" />
-
         <label htmlFor="description">Opis</label>
         <input id="description" name="description" type="text" />
 
