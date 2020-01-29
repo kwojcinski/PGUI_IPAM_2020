@@ -1,16 +1,26 @@
-dbUrl = "https://ipam-f20dc.firebaseio.com/";
-
-natAdaptersUrl = dbUrl + 'nat';
-netAdapterModel = {
-  name: '',
-  hostModel,
-  description: '',
-  externalIp: '',
-  vlanNetworkModel
+export const firebaseConfig = {
+  apiKey: "AIzaSyDfm2Q1s1Hzjot8cpCk8BjhmTAvj8CFL-E",
+  authDomain: "ipam-f20dc.firebaseapp.com",
+  databaseURL: "https://ipam-f20dc.firebaseio.com",
+  projectId: "ipam-f20dc",
+  storageBucket: "ipam-f20dc.appspot.com",
+  messagingSenderId: "192763837762",
+  appId: "1:192763837762:web:6610c2a4cb7e8cef0f5cdb"
 };
 
-hostsUrl = dbUrl + 'hosts';
-hostModel = {
+export const dbUrl = "https://ipam-f20dc.firebaseio.com/";
+
+export const natAdaptersUrl = dbUrl + 'nat';
+export const netAdapterModel = {
+  name: '',
+  hostModel: {},
+  description: '',
+  externalIp: '',
+  vlanNetworkModel: {}
+};
+
+export const hostsUrl = dbUrl + 'hosts';
+export const hostModel = {
   ip: '',
   hostname: '',
   description: '',
@@ -21,29 +31,29 @@ hostModel = {
   physicalLocationDescription: '',
 };
 
-ipNetworksUrl = dbUrl + 'ips';
-ipNetworkModel = {
+export const ipNetworksUrl = dbUrl + 'ips';
+export const ipNetworkModel = {
   network: '',
   mask: '',
   description: '',
-  vlanNetworkModel: vlanNetworkModel,
+  vlanNetworkModel: {},
   serversName: '',
-  locationModel: locationModel,
+  locationModel: {},
   routable: false,
   publicTrueDmzFalse: true,
   dynamicTrueStaticFalse: true
 };
 
-locationsUrl = dbUrl + 'locations';
-locationModel = {
+export const locationsUrl = dbUrl + 'locations';
+export const locationModel = {
   location: '',
   description: ''
 };
 
-vlanNetworksUrl = dbUrl + 'vlan';
-vlanNetworkModel = {
+export const vlanNetworksUrl = dbUrl + 'vlan';
+export const vlanNetworkModel = {
   identity: '',
   description: '',
-  ipNetworkModels: [ipNetworkModel]
+  ipNetworkModels: [{}]
 };
 
