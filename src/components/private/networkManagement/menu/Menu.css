@@ -6,9 +6,15 @@
     width: 200px;
     margin: 0;
     padding: 20px 10px;
+    background-color: #373737;
 }
 
 .menuLink {
-    text-align: center;
-    margin: 10px 20px;
+    border-color: #414141;
+    background: #4b4b4b;
+    color: ghostwhite;
+    border-radius: 0.5em;
+    height: 40px;
+    width: 150px;
+    margin: 0;
 }
