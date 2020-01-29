@@ -1,6 +1,12 @@
 import React, { Fragment } from "react";
 import { useAuth0 } from "../../../react-auth0-spa";
-import {Link} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
+import Homepage from "../../public/Homepage";
+import PrivateRoute from "../PrivateRoute";
+import RegisterDevice from "../device/RegisterDevice";
+import VLANPage from "../vlan/VLANPage";
+import DefineNAT from "../nat/DefineNAT";
+import ProfileData from "./ProfileData";
 
 const Profile = () => {
   const { loading, user } = useAuth0();
@@ -11,20 +17,28 @@ const Profile = () => {
 
   return (
     <Fragment>
-      <img src={user.picture} alt="Profile" />
 
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <code>{JSON.stringify(user, null, 2)}</code>
-      <Link to="/registerDevice">
+      <menu>
+        <Link to="/profile">
+          <button>Profil</button>
+        </Link>
+        <Link to="/profile/registerDevice">
           <button>Zarejestruj urządzenie</button>
-      </Link>
-      <Link to="/defineNAT">
+        </Link>
+        <Link to="/profile/defineNAT">
           <button>Zdefiniuj NAT</button>
-      </Link>
-      <Link to="/registerVLAN">
+        </Link>
+        <Link to="/profile/registerVLAN">
           <button>Zarejestruj VLAN</button>
-      </Link>
+        </Link>
+      </menu>
+
+      <Switch>
+        <PrivateRoute exact path="/profile" component={ProfileData}/>
+        <PrivateRoute exact path="/profile/registerDevice" component={RegisterDevice}/>
+        <PrivateRoute exact path="/profile/registerVLAN" component={VLANPage}/>
+        <PrivateRoute exact path="/profile/defineNAT" component={DefineNAT}/>
+      </Switch>
     </Fragment>
   );
 };
