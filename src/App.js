@@ -24,6 +24,7 @@ class App extends React.Component {
             </header>
 
             <main>
+              <div>niezmienne</div>
               <Switch>
                 <Route path="/" exact render={Homepage}/>
                 <PrivateRoute path="/profile" component={Profile}/>
