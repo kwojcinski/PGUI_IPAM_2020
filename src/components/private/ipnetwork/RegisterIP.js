@@ -16,13 +16,18 @@ const RegisterIP = (props) => {
   }; 
   return (
     <form onSubmit={handleSubmit}>
+        <label htmlFor="ip">IP</label>
+        <input id="ip" name="ip" type="text" />
+
         <label htmlFor="description">Opis</label>
         <input id="description" name="description" type="text" />
 
         <label htmlFor="vlan">VLAN</label>
-        <select name="cars">
+        <select name="vlan">
             <option value="0">Wybierz VLAN</option>
-            {}
+            {props.data.map(rec =>
+                <option key={rec.id} value={rec.id}>{rec.body.description}</option>
+            )}
         </select>
         <button>Dodaj</button>
     </form>
