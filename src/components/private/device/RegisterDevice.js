@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useAuth0 } from "../../../react-auth0-spa";
 import {Link} from "react-router-dom";
 
-const RegisterDevice = () => {
+const RegisterDevice = (props) => {
   const { loading, user } = useAuth0();
 
   if (loading || !user) {

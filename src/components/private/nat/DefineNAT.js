@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useAuth0 } from "../../../react-auth0-spa";
 
-const DefineNAT = () => {
+const DefineNAT = (props) => {
   const { loading, user } = useAuth0();
 
   if (loading || !user) {

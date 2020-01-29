@@ -19,7 +19,7 @@ const RegisterVLAN = (props) => {
     <form onSubmit={handleSubmit}>
         <label htmlFor="description">Opis</label>
         <input id="description" name="description" type="text" />
-
+        <input hidden name="owner" defaultValue={user.sub}></input>
         <button>Dodaj</button>
     </form>
   );

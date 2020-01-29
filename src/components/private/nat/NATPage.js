@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import DefineNAT from "./RegisterVLAN";
+import DefineNAT from "./DefineNAT";
 import firebase from "firebase";
 
-class VLANPage extends Component {
+class NATPage extends Component {
 
 
   constructor(props) {
@@ -25,7 +25,7 @@ class VLANPage extends Component {
   render() {
     return (
         <div>
-          <DefineNAT handleSubmit={this.addNewVLAN}/>
+          <DefineNAT handleSubmit={this.addNewNAT}/>
           <div>Lista dodanych</div>
         </div>
     );
@@ -33,5 +33,5 @@ class VLANPage extends Component {
 
 }
 
-export default VLANPage;
+export default NATPage;
 
