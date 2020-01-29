@@ -15,8 +15,8 @@ export const netAdapterModel = {
   name: '',
   hostModel: {},
   description: '',
-  externalIp: '',
-  vlanNetworkModel: {}
+  vlanNetworkModel: {},
+  owner: ''
 };
 
 export const hostsUrl = dbUrl + 'hosts';
@@ -25,10 +25,7 @@ export const hostModel = {
   hostname: '',
   description: '',
   macAddress: '',
-  isGate: false,
-  owner: '',
-  deviceDescription: '',
-  physicalLocationDescription: '',
+  owner: ''
 };
 
 export const ipNetworksUrl = dbUrl + 'ips';
@@ -37,23 +34,22 @@ export const ipNetworkModel = {
   mask: '',
   description: '',
   vlanNetworkModel: {},
-  serversName: '',
   locationModel: {},
-  routable: false,
-  publicTrueDmzFalse: true,
-  dynamicTrueStaticFalse: true
+  owner: ''
 };
 
 export const locationsUrl = dbUrl + 'locations';
 export const locationModel = {
   location: '',
-  description: ''
+  description: '',
+  owner: ''
 };
 
 export const vlanNetworksUrl = dbUrl + 'vlan';
 export const vlanNetworkModel = {
   identity: '',
   description: '',
-  ipNetworkModels: [{}]
+  ipNetworkModels: [{}],
+  owner: ''
 };
 
