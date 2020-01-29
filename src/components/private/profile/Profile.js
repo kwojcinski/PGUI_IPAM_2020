@@ -1,17 +1,12 @@
-<<<<<<< HEAD
-import React, { Fragment } from "react";
-import { useAuth0 } from "../../../react-auth0-spa";
-import {Link} from "react-router-dom";
-=======
 import React, {Fragment} from "react";
 import {useAuth0} from "../../../react-auth0-spa";
 import PrivateRoute from "../PrivateRoute";
-import RegisterDevice from "../device/RegisterDevice";
+import DevicePage from "../device/DevicePage";
 import VLANPage from "../vlan/VLANPage";
-import DefineNAT from "../nat/DefineNAT";
+import NATPage from "../nat/NATPage";
+import IPNetworkPage from "../ipnetwork/IPNetworkPage";
 import ProfileData from "./ProfileData";
 import Menu from "./Menu";
->>>>>>> fdc987def77ddfc89fc2b210bd9023569a967eec
 
 const Profile = () => {
   const {loading, user} = useAuth0();
@@ -21,34 +16,16 @@ const Profile = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <Fragment>
-      <img src={user.picture} alt="Profile" />
-
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <code>{JSON.stringify(user, null, 2)}</code>
-      <Link to="/registerDevice">
-          <button>Zarejestruj urządzenie</button>
-      </Link>
-      <Link to="/defineNAT">
-          <button>Zdefiniuj NAT</button>
-      </Link>
-      <Link to="/registerVLAN">
-          <button>Zarejestruj VLAN</button>
-      </Link>
-    </Fragment>
-=======
       <Fragment>
         <Menu/>
         <article>
           <PrivateRoute exact path="/profile" component={ProfileData}/>
-          <PrivateRoute exact path="/profile/registerDevice" component={RegisterDevice}/>
-          <PrivateRoute exact path="/profile/registerVLAN" component={VLANPage}/>
-          <PrivateRoute exact path="/profile/defineNAT" component={DefineNAT}/>
+          <PrivateRoute exact path="/profile/Device" component={DevicePage}/>
+          <PrivateRoute exact path="/profile/VLAN" component={VLANPage}/>
+          <PrivateRoute exact path="/profile/IP" component={IPNetworkPage}/>
+          <PrivateRoute exact path="/profile/NAT" component={NATPage}/>
         </article>
       </Fragment>
->>>>>>> fdc987def77ddfc89fc2b210bd9023569a967eec
   );
 };
 

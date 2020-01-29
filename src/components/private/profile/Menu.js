@@ -8,14 +8,17 @@ const Menu = () => {
         <Link to="/profile">
           <button>Profil</button>
         </Link>
-        <Link to="/profile/registerDevice">
-          <button>Zarejestruj urządzenie</button>
+        <Link to="/profile/Device">
+          <button>Urządzenia</button>
         </Link>
-        <Link to="/profile/defineNAT">
-          <button>Zdefiniuj NAT</button>
+        <Link to="/profile/NAT">
+          <button>NAT</button>
         </Link>
-        <Link to="/profile/registerVLAN">
-          <button>Zarejestruj VLAN</button>
+        <Link to="/profile/VLAN">
+          <button>VLAN</button>
+        </Link>
+        <Link to="/profile/IP">
+          <button>IP</button>
         </Link>
       </menu>
     </Fragment>
