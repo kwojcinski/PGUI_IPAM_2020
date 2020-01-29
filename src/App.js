@@ -28,9 +28,6 @@ class App extends React.Component {
               <Switch>
                 <Route path="/" exact render={Homepage}/>
                 <PrivateRoute path="/profile" component={Profile}/>
-                <PrivateRoute path="/registerDevice" component={RegisterDevice}/>
-                <PrivateRoute path="/registerVLAN" component={VLANPage}/>
-                <PrivateRoute path="/defineNAT" component={DefineNAT}/>
               </Switch>
             </main>
 
