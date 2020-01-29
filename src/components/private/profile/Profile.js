@@ -18,7 +18,7 @@ const Profile = () => {
   return (
       <Fragment>
         <Menu/>
-        <article>
+        <article style={{marginLeft: "200px"}}>
           <PrivateRoute exact path="/profile" component={ProfileData}/>
           <PrivateRoute exact path="/profile/Device" component={DevicePage}/>
           <PrivateRoute exact path="/profile/VLAN" component={VLANPage}/>
