@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
-import { useAuth0 } from "../../../react-auth0-spa";
+import { useAuth0 } from "../../../../../react-auth0-spa";
 
-
-const RegisterVLAN = (props) => {
+const DefineNAT = (props) => {
   const { loading, user } = useAuth0();
 
   if (loading || !user) {
@@ -12,22 +11,24 @@ const RegisterVLAN = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
-
-    if(data.get('description').length < 3)
-      return;
-
-    event.target.reset();
     props.handleSubmit(data);
   };
 
   return (
     <form onSubmit={handleSubmit}>
+
+        <label htmlFor="name">Nazwa</label>
+        <input id="name" name="name" type="text" />
+
+        <label htmlFor="device">Urządzenie</label>
+        <input id="device" name="device" type="text" />
+
         <label htmlFor="description">Opis</label>
-        <input id="description" name="description" type="text" required minLength='3'/>
-        <input hidden name="owner" defaultValue={user.sub} />
+        <input id="description" name="description" type="text" />
+
         <button>Dodaj</button>
     </form>
   );
 };
 
-export default RegisterVLAN;
+export default DefineNAT;
