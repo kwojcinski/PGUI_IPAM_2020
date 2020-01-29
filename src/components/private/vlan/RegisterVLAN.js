@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
-import { useAuth0 } from "../../react-auth0-spa";
+import { useAuth0 } from "../../../react-auth0-spa";
+import firebase from "firebase";
 
-const RegisterVLAN = () => {
+
+const RegisterVLAN = (props) => {
   const { loading, user } = useAuth0();
 
   if (loading || !user) {
@@ -10,13 +12,8 @@ const RegisterVLAN = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target);
-    // const data = new FormData(event.target);
-    
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // });
+    const data = new FormData(event.target);
+    props.handleSubmit(data);
   };
 
   return (
