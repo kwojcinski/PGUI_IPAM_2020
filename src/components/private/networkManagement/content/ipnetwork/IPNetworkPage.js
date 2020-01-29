@@ -1,9 +1,10 @@
 
-import React, { Fragment } from "react";
+import React, { Component } from "react";
 import { useAuth0 } from "../../../../../react-auth0-spa";
+import RegisterIP from "./RegisterIP"
+import firebase from "firebase";
 
 class IPNetworkPage extends Component {
-
 
   constructor(props) {
     super(props);
@@ -25,6 +26,7 @@ class IPNetworkPage extends Component {
       this.updateIPlist();
     });
   };
+
   componentDidMount() {
     this.updateVLANlist();
     this.updateIPlist();
