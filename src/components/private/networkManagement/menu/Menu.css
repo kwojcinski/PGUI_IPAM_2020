@@ -3,10 +3,11 @@
     left: 0;
     bottom: 0;
     top: 50px;
-    width: 200px;
+    width: 144px;
     margin: 0;
-    padding: 20px 10px;
+    padding: 0 10px;
     background-color: #373737;
+    overflow-y: auto;
 }
 
 .menuLink {
@@ -14,7 +15,22 @@
     background: #4b4b4b;
     color: ghostwhite;
     border-radius: 0.5em;
-    height: 40px;
-    width: 150px;
-    margin: 0;
+    height: 10%;
+    margin: 18% auto;
+    width: 130px;
+    min-height: 70px;
+}
+
+.menuLink button {
+    border-color: #414141;
+    background: #4b4b4b;
+    color: ghostwhite;
+    border-radius: 0.5em;
+    height: 60%;
+    width: 80%;
+    margin: 10%;
+}
+.menuLink button:visited, .menuLink button:focus, .menuLink button:active {
+    background: #3c3c3c;
+    outline: 0;
 }
