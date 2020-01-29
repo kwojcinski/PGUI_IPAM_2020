@@ -14,10 +14,9 @@
     margin: 6px;
 }
 
-.navBar a button{
+.logoutBtn {
     float: right;
 }
-
 
 .navBar button:visited, .navBar button:focus, .navBar button:active {
     background: #3c3c3c;

@@ -10,6 +10,7 @@ import Profile from "./components/private/profile/Profile";
 import Homepage from "./components/public/Homepage";
 import NavBar from "./components/public/NavBar";
 import history from "./utils/history";
+import {useAuth0} from "./react-auth0-spa";
 
 class App extends React.Component {
 

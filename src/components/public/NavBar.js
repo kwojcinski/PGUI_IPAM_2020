@@ -13,10 +13,9 @@ const NavBar = () => {
         )}
         {isAuthenticated && (
             <>
-              <button onClick={() => logout()}>Log out</button>
-              <Link to="/registerVLAN">
-                <button>Vlan</button>
-              </Link>
+              <button onClick={() => logout()} className='logoutBtn'>
+                Log out
+              </button>
               <Link to="/profile">
                 <button>Profile</button>
               </Link>
