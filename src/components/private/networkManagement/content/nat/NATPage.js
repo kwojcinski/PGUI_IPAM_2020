@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import DefineNAT from "./DefineNAT";
-import firebase from "firebase";
+import database from "../../../../../utils/database";
 
 class NATPage extends Component {
 
 
   constructor(props) {
     super(props);
-    this.database = firebase.database();
+    // this.database = firebase.database();
   }
 
   addNewNAT = (hostData) => {
@@ -15,8 +15,8 @@ class NATPage extends Component {
     for (let entry of hostData.entries()) {
       host[entry[0]] = entry[1];
     }
-    let key = this.database.ref('/vlan').push(host).key;
-    let result = this.database.ref('vlan/' + key);
+    let key = database.ref('/vlan').push(host).key;
+    let result = database.ref('vlan/' + key);
     result.on("value", snap => {
       console.log(snap.val());
     });

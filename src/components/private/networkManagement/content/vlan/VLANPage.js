@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import RegisterVLAN from "./RegisterVLAN";
-import firebase from "firebase";
+import database from "../../../../../utils/database";
 
 class VLANPage extends Component {
 
   constructor(props) {
     super(props);
-    this.database = firebase.database();
     this.state = {data: []};
   }
 
@@ -15,7 +14,7 @@ class VLANPage extends Component {
     for (let entry of hostData.entries()) {
       host[entry[0]] = entry[1];
     }
-    this.database.ref('/vlan').push(host);
+    database.ref('/vlan').push(host);
     this.updateVLANList();
   };
 
@@ -24,7 +23,7 @@ class VLANPage extends Component {
   }
 
   updateVLANList = () => {
-    this.database.ref('vlan').once('value').then(snap => {
+    database.ref('vlan').once('value').then(snap => {
       let result = Object.entries(snap.val()).map(el => (
           {id: el[0], body: el[1]}
       ));

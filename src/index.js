@@ -3,14 +3,12 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import * as firebase from "firebase";
-import * as firebaseHelper from "./firebaseConf";
-import { Auth0Provider } from "./react-auth0-spa";
-import config from "./auth_config.json";
+import firebase_config from "./config/firebase_config.json";
+import { Auth0Provider } from "./auth/react-auth0-spa";
+import auth_config from "./config/auth_config.json";
 import history from "./utils/history";
 import './index.css'
 
-//Initialisation connection to firebase
-firebase.initializeApp(firebaseHelper.firebaseConfig);
 
 // A function that routes the user to the right place
 // after login
@@ -24,8 +22,8 @@ const onRedirectCallback = appState => {
 
 ReactDOM.render(
   <Auth0Provider
-    domain={config.domain}
-    client_id={config.clientId}
+    domain={auth_config.domain}
+    client_id={auth_config.clientId}
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
   >

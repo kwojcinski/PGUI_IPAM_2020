@@ -1,9 +1,0 @@
-export const firebaseConfig = {
-  apiKey: "AIzaSyDfm2Q1s1Hzjot8cpCk8BjhmTAvj8CFL-E",
-  authDomain: "ipam-f20dc.firebaseapp.com",
-  databaseURL: "https://ipam-f20dc.firebaseio.com",
-  projectId: "ipam-f20dc",
-  storageBucket: "ipam-f20dc.appspot.com",
-  messagingSenderId: "192763837762",
-  appId: "1:192763837762:web:6610c2a4cb7e8cef0f5cdb"
-};

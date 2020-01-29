@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import {useAuth0} from "../../../react-auth0-spa";
+import {useAuth0} from "../../../auth/react-auth0-spa";
 
 import Menu from "./menu/Menu";
 import Content from "./content/Content";

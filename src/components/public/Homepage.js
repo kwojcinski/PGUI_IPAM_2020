@@ -1,6 +1,6 @@
 import React from "react";
 import './Homepage.css'
-import background from '../../network-image.jpg'
+import background from '../../resources/network-image.jpg'
 
 const Homepage = () => {
   return (
