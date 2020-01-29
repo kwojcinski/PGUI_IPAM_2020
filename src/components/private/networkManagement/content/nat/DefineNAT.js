@@ -21,11 +21,27 @@ const DefineNAT = (props) => {
         <input id="name" name="name" type="text" />
 
         <label htmlFor="device">Urządzenie</label>
-        <input id="device" name="device" type="text" />
+        <select name="device">
+            <option value="0">Wybierz urządzenie</option>
+            {props.hostData.map(rec =>
+                <option key={rec.id} value={rec.id}>{rec.body.name}</option>
+            )}
+        </select>
 
         <label htmlFor="description">Opis</label>
         <input id="description" name="description" type="text" />
 
+        <label htmlFor="externalIP">Zewnętrzne IP</label>
+        <input id="externalIP" name="externalIP" type="text" />
+
+        <label htmlFor="ip">IP</label>
+        <select name="ip">
+            <option value="0">Wybierz IP</option>
+            {props.ipData.map(rec =>
+                <option key={rec.id} value={rec.id}>{rec.body.ip}</option>
+            )}
+        </select>
+        <input hidden name="owner" defaultValue={user.sub} />
         <button>Dodaj</button>
     </form>
   );

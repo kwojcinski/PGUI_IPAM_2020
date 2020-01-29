@@ -26,6 +26,7 @@ const RegisterDevice = (props) => {
         <label htmlFor="description">Opis urządzenia</label>
         <input id="description" name="description" type="text" />
 
+        <input hidden name="owner" defaultValue={user.sub} />
         <button>Dodaj</button>
     </form>
   );
