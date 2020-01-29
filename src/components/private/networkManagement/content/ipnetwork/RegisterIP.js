@@ -29,6 +29,7 @@ const RegisterIP = (props) => {
                 <option key={rec.id} value={rec.id}>{rec.body.description}</option>
             )}
         </select>
+        <input hidden name="owner" defaultValue={user.sub} />
         <button>Dodaj</button>
     </form>
   );

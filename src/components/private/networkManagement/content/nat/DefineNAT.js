@@ -31,7 +31,7 @@ const DefineNAT = (props) => {
         <label htmlFor="description">Opis</label>
         <input id="description" name="description" type="text" />
 
-        <label htmlFor="externalIP">Opis</label>
+        <label htmlFor="externalIP">Zewnętrzne IP</label>
         <input id="externalIP" name="externalIP" type="text" />
 
         <label htmlFor="ip">IP</label>
@@ -41,7 +41,7 @@ const DefineNAT = (props) => {
                 <option key={rec.id} value={rec.id}>{rec.body.ip}</option>
             )}
         </select>
-
+        <input hidden name="owner" defaultValue={user.sub} />
         <button>Dodaj</button>
     </form>
   );
