@@ -1,9 +1,10 @@
 import React, {Fragment} from "react";
 import {useAuth0} from "../../../react-auth0-spa";
 import PrivateRoute from "../PrivateRoute";
-import RegisterDevice from "../device/RegisterDevice";
+import DevicePage from "../device/DevicePage";
 import VLANPage from "../vlan/VLANPage";
-import DefineNAT from "../nat/DefineNAT";
+import NATPage from "../nat/NATPage";
+import IPNetworkPage from "../ipnetwork/IPNetworkPage";
 import ProfileData from "./ProfileData";
 import Menu from "./Menu";
 
@@ -19,9 +20,10 @@ const Profile = () => {
         <Menu/>
         <article>
           <PrivateRoute exact path="/profile" component={ProfileData}/>
-          <PrivateRoute exact path="/profile/registerDevice" component={RegisterDevice}/>
-          <PrivateRoute exact path="/profile/registerVLAN" component={VLANPage}/>
-          <PrivateRoute exact path="/profile/defineNAT" component={DefineNAT}/>
+          <PrivateRoute exact path="/profile/Device" component={DevicePage}/>
+          <PrivateRoute exact path="/profile/VLAN" component={VLANPage}/>
+          <PrivateRoute exact path="/profile/IP" component={IPNetworkPage}/>
+          <PrivateRoute exact path="/profile/NAT" component={NATPage}/>
         </article>
       </Fragment>
   );
