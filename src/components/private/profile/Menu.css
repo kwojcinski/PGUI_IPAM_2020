@@ -1,7 +1,14 @@
 .leftMenu {
     position: fixed;
-    left: 0; bottom: 0; top: 50px;
+    left: 0;
+    bottom: 0;
+    top: 50px;
     width: 200px;
     margin: 0;
     padding: 20px 10px;
+}
+
+.menuLink {
+    text-align: center;
+    margin: 10px 20px;
 }
