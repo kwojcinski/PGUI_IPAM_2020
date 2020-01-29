@@ -1,10 +1,10 @@
 import React, {Fragment} from "react";
 import {useAuth0} from "../../../react-auth0-spa";
 
-import Menu from "./Menu";
-import Content from "./Content";
+import Menu from "./menu/Menu";
+import Content from "./content/Content";
 
-const Profile = () => {
+const NetworkManagement = () => {
   const {loading, user} = useAuth0();
 
   if (loading || !user) {
@@ -19,4 +19,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default NetworkManagement;

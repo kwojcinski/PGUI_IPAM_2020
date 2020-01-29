@@ -1,9 +1,9 @@
 import React from "react";
 
-// New - import the React Router components, and the Profile page component
+// New - import the React Router components, and the NetworkManagement page component
 import {Router, Route, Switch} from "react-router-dom";
 import PrivateRoute from "./components/private/PrivateRoute";
-import Profile from "./components/private/profile/Profile";
+import NetworkManagement from "./components/private/networkManagement/NetworkManagement";
 import Homepage from "./components/public/Homepage";
 import NavBar from "./components/public/NavBar";
 import history from "./utils/history";
@@ -23,7 +23,7 @@ class App extends React.Component {
             <main>
               <Switch>
                 <Route path="/" exact render={Homepage}/>
-                <PrivateRoute path="/profile" component={Profile}/>
+                <PrivateRoute path="/network" component={NetworkManagement}/>
               </Switch>
             </main>
 

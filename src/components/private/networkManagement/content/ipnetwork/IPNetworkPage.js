@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import RegisterIP from "./RegisterIP";
-import firebase from "firebase";
+
+import React, { Fragment } from "react";
+import { useAuth0 } from "../../../../../react-auth0-spa";
 
 class IPNetworkPage extends Component {
 

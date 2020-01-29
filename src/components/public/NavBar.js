@@ -16,8 +16,8 @@ const NavBar = () => {
               <button onClick={() => logout()} className='logoutBtn'>
                 Log out
               </button>
-              <Link to="/profile">
-                <button>Profile</button>
+              <Link to="/network">
+                <button>Network Management</button>
               </Link>
               <Link to="/">
                 <button>Home</button>
