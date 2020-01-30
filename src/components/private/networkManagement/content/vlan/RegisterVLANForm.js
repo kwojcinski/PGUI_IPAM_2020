@@ -25,7 +25,7 @@ const RegisterVLANForm = (props) => {
     <form className='new-form' onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
       <div className="showDiv">
         <label>Description</label>
-        <input name="description" type="text" required minLength='3'/>
+        <input className="inputAdd" name="description" type="text" required minLength='3'/>
         </div>
         <input hidden name="owner" defaultValue={user.sub} />
         <div className="buttonDiv">

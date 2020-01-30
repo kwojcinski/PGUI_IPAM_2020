@@ -19,7 +19,7 @@ class EditVLANForm extends Component {
           <div>
             <div className="showDiv">
             <label>Opis</label>
-            <input name="description" type="text" required value={this.state.description}
+            <input className="inputAdd" name="description" type="text" required value={this.state.description}
                    onChange={event => this.handleChange(event, 'description')} minLength='3' />
                    </div>
           </div>
