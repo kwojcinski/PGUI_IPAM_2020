@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth0 } from "../../../../../auth/react-auth0-spa";
-
+import database from "../../../../../utils/database";
 
 const ImportFromFileBodyComponent = (props) => {
   const { loading, user } = useAuth0();
@@ -8,7 +8,19 @@ const ImportFromFileBodyComponent = (props) => {
 
   const handleFileRead = (e) => {
       const content = fileReader.result;
-      console.log(content);
+      const data = JSON.parse(content)
+      data.hosts.map(el => {
+        database.ref('/host').child(el.id).set(el.body);
+      })
+      data.vlans.map(el => {
+        database.ref('/vlan').child(el.id).set(el.body);
+      })
+      data.ips.map(el => {
+        database.ref('/ip').child(el.id).set(el.body);
+      })
+      data.nats.map(el => {
+        database.ref('/nat').child(el.id).set(el.body);
+      })
   } 
 
   const handleFileChosen = (file) => {
@@ -32,7 +44,7 @@ const ImportFromFileBodyComponent = (props) => {
     <div>
         <input type='file'
                 id='file'
-                accept='.csv'
+                accept='.json'
                 onChange={e => handleFileChosen(e.target.files[0])}
                 />
                 {/* <button onClick={() => console.log(props.data)}>hedasdasdqwsadhe</button> */}
