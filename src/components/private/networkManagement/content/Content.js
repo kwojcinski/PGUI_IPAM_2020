@@ -5,6 +5,7 @@ import VLANPage from "./vlan/VLANPage";
 import NATPage from "./nat/NATPage";
 import IPNetworkPage from "./ipnetwork/IPNetworkPage";
 import ProfilePage from "./profile/ProfilePage";
+import Database from "./database/DatabasePage"
 import './Content.css'
 
 const Content = (props) => {
