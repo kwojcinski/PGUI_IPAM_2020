@@ -51,13 +51,12 @@ class NATRecord extends Component {
               <button onClick={() => this.handleClickAction('delete')}>Delete</button>
             </div>
           </div>
-          <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
+          <div hidden={!this.state.showEdit} className='confirm-frame'>
             <EditNATForm handleSaveEditedRec={this.handleSaveEditedRec}
                          cancel={() => this.handleClickAction('edit')}
                          {...this.props}/>
           </div>
-          <div hidden={!this.state.showDeleteConf}
-               style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
+          <div hidden={!this.state.showDeleteConf} className='confirm-frame'>
             <h3 className='delete-confirm'>Are you sure you want to delete?</h3>
             <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
             <button onClick={() => this.props.handleDelete(id)}>Confirm</button>

@@ -68,6 +68,14 @@
     border-radius: 0.5em;
 }
 
+.confirm-frame {
+    width: 60%;
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
 .delete-confirm {
     padding-top: 10px;
 }
