@@ -117,7 +117,7 @@ class NATPage extends Component {
   };
 
   render() {
-    return (this.state.synchronisedIps && this.state.synchronisedDevices && this.state.hostData.length && this.state.ipData.length) ? (
+    return (this.state.synchronisedIps && this.state.synchronisedDevices && this.state.hostData.length > 0 && this.state.ipData.length > 0) ? (
         <div>
           <DefineNATForm handleSubmit={this.addNewNAT} ipData={this.state.ipData} hostData={this.state.hostData}/>
           {this.state.data.map(rec =>
