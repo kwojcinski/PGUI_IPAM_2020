@@ -35,5 +35,6 @@
 }
 
 .record {
-    background-color: dimgrey;
+    background-color: lightgrey;
+    border-radius: 5px;
 }
