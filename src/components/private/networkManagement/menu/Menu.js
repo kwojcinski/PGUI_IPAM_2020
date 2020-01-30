@@ -11,6 +11,7 @@ const Menu = () => {
           <MenuLink linkTo='/network/NAT' description='NAT'/>
           <MenuLink linkTo='/network/VLAN' description='VLAN'/>
           <MenuLink linkTo='/network/IP' description='IP'/>
+          <MenuLink linkTo='/network/Database' description='Database'/>
         </menu>
       </Fragment>
   );

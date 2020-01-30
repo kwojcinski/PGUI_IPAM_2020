@@ -5,6 +5,7 @@ import VLANPage from "./vlan/VLANPage";
 import NATPage from "./nat/NATPage";
 import IPNetworkPage from "./ipnetwork/IPNetworkPage";
 import ProfileData from "./profile/ProfileData";
+import Database from "./database/DatabasePage"
 import './Content.css'
 
 const Content = (props) => {
@@ -15,6 +16,7 @@ const Content = (props) => {
         <PrivateRoute exact path="/network/VLAN" component={() => <VLANPage user={props.user}/>}/>
         <PrivateRoute exact path="/network/IP" component={() => <IPNetworkPage user={props.user}/>}/>
         <PrivateRoute exact path="/network/NAT" component={() => <NATPage user={props.user}/>}/>
+        <PrivateRoute exact path="/network/Database" component={() => <Database user={props.user}/>}/>
       </article>
   );
 };
