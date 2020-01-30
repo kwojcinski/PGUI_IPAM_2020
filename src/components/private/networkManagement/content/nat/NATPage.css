@@ -1,0 +1,18 @@
+.showDiv {
+    display: inline-grid;
+    width: 20%;
+}
+
+.buttonDiv {
+    display: inline-grid;
+    vertical-align: bottom;
+    margin-left: 1%;
+}
+.changes {
+    display: inline;
+}
+
+.inputAdd{
+    width: 50%;
+    margin: 0 auto;
+}

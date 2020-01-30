@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import RegisterVLAN from "./RegisterVLAN";
 import database from "../../../../../utils/database";
+import RegisterVLANForm from "./RegisterVLANForm";
+import VLANRecord from "./VLANRecord";
+import './VLANPage.css'
+
 
 class VLANPage extends Component {
 
@@ -25,10 +28,10 @@ class VLANPage extends Component {
   updateVLANList = () => {
     database.ref('vlan').once('value').then(snap => {
       let result = Object.entries(snap.val())
-      .filter(el => el[1].owner === this.props.user.sub)
-      .map(el => (
-                  {id: el[0], body: el[1]}
-              ));
+          .filter(el => el[1].owner === this.props.user.sub)
+          .map(el => (
+              {id: el[0], body: el[1]}
+          ));
       this.setState({
         data: result
       });
@@ -38,13 +41,18 @@ class VLANPage extends Component {
   render() {
     return (
         <div>
-          <RegisterVLAN handleSubmit={this.addNewVLAN}/>
-          <div>Lista dodanych</div>
-          <ul>
-            {this.state.data.map(rec =>
-                <li key={rec.id}>{rec.body.description}</li>
-            )}
-          </ul>
+          <RegisterVLANForm handleSubmit={this.addNewVLAN}/>
+          {
+            this.state.data.map(rec =>
+                <VLANRecord
+                    key={rec.id}
+                    owner={rec.body.owner}
+                    description={rec.body.description}
+                    handleEdit={this.editHost}
+                    handleDelete={this.removeHost}
+                />
+            )
+          }
         </div>
     );
   }

@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-import RegisterIP from "./RegisterIP"
+import RegisterIPForm from "./RegisterIPForm"
 import database from "../../../../../utils/database";
-import DeviceRecord from "../device/DeviceRecord";
 import IPNetworkRecord from "./IPNetworkRecord";
 
 class IPNetworkPage extends Component {
@@ -10,7 +9,8 @@ class IPNetworkPage extends Component {
     super(props);
     this.state = {
       data: [],
-      vlanData: []
+      vlanData: [],
+      vlanSynchronised: false
     };
   }
 
@@ -19,6 +19,9 @@ class IPNetworkPage extends Component {
     for (let entry of ipData.entries()) {
       ip[entry[0]] = entry[1];
     }
+    this.setState(() => ({
+      vlanSynchronised: false,
+    }));
     let key = database.ref('/ip').push(ip).key;
     let result = database.ref('ip/' + key);
     result.on("value", snap => {
@@ -31,6 +34,9 @@ class IPNetworkPage extends Component {
     for (let entry of ipData.entries()) {
       ip[entry[0]] = entry[1];
     }
+    this.setState(() => ({
+      vlanSynchronised: false,
+    }));
     database.ref('/ip/' + key).update(ip).then(() => {
           this.updateVLANlist();
           this.updateIPlist();
@@ -39,6 +45,9 @@ class IPNetworkPage extends Component {
   };
 
   removeIP = (key) => {
+    this.setState(() => ({
+      vlanSynchronised: false,
+    }));
     database.ref('/ip/' + key).remove().then(() => {
       this.updateVLANlist();
       this.updateIPlist();
@@ -60,7 +69,8 @@ class IPNetworkPage extends Component {
             ));
 
         this.setState({
-          vlanData: result
+          vlanData: result,
+          vlanSynchronised: true,
         });
       }
     });
@@ -85,22 +95,26 @@ class IPNetworkPage extends Component {
     return (
         <div>
           {
-            this.state.vlanData.length > 0 ?
-                <RegisterIP handleSubmit={this.addNewIP} data={this.state.vlanData}/> :
+            this.state.vlanData.length > 0 ? (
+                <>
+                  <RegisterIPForm handleSubmit={this.addNewIP} data={this.state.vlanData}/>
+                  {
+                    this.state.data.map(rec =>
+                        <IPNetworkRecord
+                            key={rec.id}
+                            id={rec.id}
+                            ip={rec.body.ip}
+                            description={rec.body.description}
+                            vlan={rec.body.vlan}
+                            vlans={this.state.vlanData}
+                            handleEdit={this.editIP}
+                            handleDelete={this.removeIP}
+                        />
+                    )
+                  }
+                </>
+            ) : (
                 <span>Aby dodać sieć IP musisz wcześniej zdefiniować VLAN</span>
-          }
-          {
-            this.state.data.map(rec =>
-                <IPNetworkRecord
-                    key={rec.id}
-                    id={rec.id}
-                    ip={rec.body.ip}
-                    description={rec.body.description}
-                    vlan={rec.body.vlan}
-                    vlans={this.state.vlanData}
-                    handleEdit={this.editIP}
-                    handleDelete={this.removeIP}
-                />
             )
           }
         </div>

@@ -15,7 +15,6 @@ class EditIPForm extends Component {
   };
 
   render() {
-    console.log(this.props.vlans);
     return (
         <form onSubmit={(event) => this.props.handleSaveEditedRec(event, this.props.id)} style={{marginBottom: "1%"}}>
           <div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import DefineNAT from "./DefineNAT";
+import DefineNATForm from "./DefineNATForm";
 import database from "../../../../../utils/database";
+import NATRecord from "./NATRecord";
 
 class NATPage extends Component {
 
@@ -9,95 +10,134 @@ class NATPage extends Component {
     this.state = {
       data: [],
       hostData: [],
-      ipData: []
+      ipData: [],
+      synchronisedDevices: false,
+      synchronisedIps: false
     };
   }
 
-  addNewNAT = (hostData) => {
-    let host = {};
-    for (let entry of hostData.entries()) {
-      host[entry[0]] = entry[1];
+  addNewNAT = (NATData) => {
+    let NAT = {};
+    for (let entry of NATData.entries()) {
+      NAT[entry[0]] = entry[1];
     }
-    let key = database.ref('/nat').push(host).key;
+    this.setState(() => ({
+      synchronisedDevices: false,
+      synchronisedIps: false
+    }));
+    let key = database.ref('/nat').push(NAT).key;
     let result = database.ref('nat/' + key);
     result.on("value", snap => {
       this.updateNATlist();
+      this.updateIPlist();
+      this.updateHostlist();
+    });
+  };
+
+  editNAT = (key, NATData) => {
+    let NAT = {};
+    for (let entry of NATData.entries()) {
+      NAT[entry[0]] = entry[1];
+    }
+    this.setState(() => ({
+      synchronisedDevices: false,
+      synchronisedIps: false
+    }));
+    database.ref('/nat/' + key).update(NAT).then(() => {
+          this.updateNATlist();
+          this.updateIPlist();
+          this.updateHostlist();
+        }
+    );
+  };
+
+  removeNAT = (key) => {
+    this.setState(() => ({
+      synchronisedDevices: false,
+      synchronisedIps: false
+    }));
+    database.ref('/nat/' + key).remove().then(() => {
+      this.updateNATlist();
+      this.updateIPlist();
+      this.updateHostlist();
     });
   };
 
   componentDidMount() {
-    this.updateHostlist();
-    this.updateIPlist();
     this.updateNATlist();
+    this.updateIPlist();
+    this.updateHostlist();
   }
 
-  // componentWillUnmount(){
-  //   this._updateNats;
-  //   this._updateHosts.cancel();
-  //   this._updateIps.cancel();
-  // }
-
   updateNATlist = () => {
-    this._updateNats = database.ref('nat').once('value').then(snap => {
-      if(snap.val() != null && snap.val() !== undefined){
+    database.ref('nat').once('value').then(snap => {
+      if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
-        .filter(el => el[1].owner === this.props.user.sub)
-        .map(el => (
-                    {id: el[0], body: el[1]}
-                ));
-      this.setState({
-        data: result
-      });
-    }
+            .filter(el => el[1].owner === this.props.user.sub)
+            .map(el => (
+                {id: el[0], body: el[1]}
+            ));
+        this.setState({
+          data: result,
+        });
+      }
     });
   };
 
   updateHostlist = () => {
-    this._updateHosts = database.ref('host').once('value').then(snap => {
-      if(snap.val() != null && snap.val() !== undefined){
+    database.ref('host').once('value').then(snap => {
+      if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
-        .filter(el => el[1].owner === this.props.user.sub)
-        .map(el => (
-                    {id: el[0], body: el[1]}
-                ));
-      this.setState({
-        hostData: result
-      });
-    }
+            .filter(el => el[1].owner === this.props.user.sub)
+            .map(el => (
+                {id: el[0], body: el[1]}
+            ));
+        this.setState(() => ({
+          hostData: result,
+          synchronisedDevices: true
+        }));
+      }
     });
   };
 
   updateIPlist = () => {
-    this._updateIps = database.ref('ip').once('value').then(snap => {
-      if(snap.val() != null && snap.val() !== undefined){
+    database.ref('ip').once('value').then(snap => {
+      if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
-        .filter(el => el[1].owner === this.props.user.sub)
-        .map(el => (
-                    {id: el[0], body: el[1]}
-                ));
-      this.setState({
-        ipData: result
-      });
-    }
+            .filter(el => el[1].owner === this.props.user.sub)
+            .map(el => (
+                {id: el[0], body: el[1]}
+            ));
+        this.setState(() => ({
+          ipData: result,
+          synchronisedIps: true
+        }));
+      }
     });
   };
 
   render() {
-    let button;
-    if (this.state.hostData.length > 0 && this.state.ipData.length > 0) {
-      button = <DefineNAT handleSubmit={this.addNewNAT} ipData={this.state.ipData} hostData={this.state.hostData}/>
-    } else {
-      button = <div>Dodaj urządzenia i sieci IP</div>;
-    }
-    return (
+    return (this.state.synchronisedIps && this.state.synchronisedDevices && this.state.hostData.length && this.state.ipData.length) ? (
         <div>
-          {button}
-          <div>Lista dodanych</div>
-          <ul>
-            {this.state.data.map(rec =>
-                <li key={rec.id}>{rec.body.name}</li>
-            )}
-          </ul>
+          <DefineNATForm handleSubmit={this.addNewNAT} ipData={this.state.ipData} hostData={this.state.hostData}/>
+          {this.state.data.map(rec =>
+              <NATRecord
+                  key={rec.id}
+                  id={rec.id}
+                  name={rec.body.name}
+                  device={rec.body.device}
+                  devices={this.state.hostData}
+                  description={rec.body.description}
+                  externalIP={rec.body.externalIP}
+                  ip={rec.body.ip}
+                  ips={this.state.ipData}
+                  handleEdit={this.editNAT}
+                  handleDelete={this.removeNAT}
+              />)}
+        </div>
+    ) : (
+        <div>
+          <span>Aby dodać sieć IP musisz wcześniej dodać urządzenia i sieci IP</span>
         </div>
     );
   }

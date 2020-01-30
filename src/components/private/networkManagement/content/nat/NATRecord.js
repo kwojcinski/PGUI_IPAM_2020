@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './IPNetworkPage.css'
-import EditIPForm from "./EditIPForm";
+import './NATPage.css'
+import EditNATForm from "./EditNATForm";
 
-class IPNetworkRecord extends Component {
+class NATRecord extends Component {
 
   state = {
     showEdit: false,
@@ -33,31 +33,37 @@ class IPNetworkRecord extends Component {
   };
 
   render() {
-    let {id, ip, description, vlan, vlans} = this.props;
-    let vlanName = vlans.filter(rec => rec.id === vlan)[0];
-    vlanName = vlanName === undefined ? 'Brak' : vlanName.body.description;
+    let {id, name, device, devices, description, externalIP, ip, ips} = this.props;
+    let devName = devices.filter(rec => rec.id === device)[0];
+    devName = devName === undefined ? 'Brak' : devName.body.name;
+    let ipName = ips.filter(rec => rec.id === ip)[0];
+    ipName = ipName === undefined ? 'Brak' : ipName.body.ip;
     return (
-        <>
+        <div>
           <div>
-            <div className="showDiv">{ip}</div>
+            <div className="showDiv">{name}</div>
+            <div className="showDiv">{devName}</div>
             <div className="showDiv">{description}</div>
-            <div className="showDiv">{vlanName}</div>
+            <div className="showDiv">{externalIP}</div>
+            <div className="showDiv">{ipName}</div>
             <div className="changes">
               <button onClick={() => this.handleClickAction('edit')}>edit</button>
               <button onClick={() => this.handleClickAction('delete')}>delete</button>
             </div>
           </div>
           <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
-            <EditIPForm handleSaveEditedRec={this.handleSaveEditedRec} {...this.props}/>
+            <EditNATForm handleSaveEditedRec={this.handleSaveEditedRec} {...this.props}/>
           </div>
-          <div hidden={!this.state.showDeleteConf} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
+          <div hidden={!this.state.showDeleteConf}
+               style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
             <button onClick={() => this.handleClickAction('delete')}>Anuluj</button>
             <button onClick={() => this.props.handleDelete(id)}>Potwierdź</button>
           </div>
-        </>
-    );
+        </div>
+    )
   }
+
 }
 
-export default IPNetworkRecord;
+export default NATRecord;
 

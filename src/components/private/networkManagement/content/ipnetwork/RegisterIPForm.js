@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "../../../../../auth/react-auth0-spa";
 
 
-const RegisterIP = (props) => {
+const RegisterIPForm = (props) => {
   const { loading, user } = useAuth0();
 
   if (loading || !user) {
@@ -36,4 +36,4 @@ const RegisterIP = (props) => {
   );
 };
 
-export default RegisterIP;
+export default RegisterIPForm;
