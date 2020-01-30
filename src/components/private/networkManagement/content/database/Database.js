@@ -22,6 +22,12 @@ const ImportFromFileBodyComponent = (props) => {
       database.ref('/nat').child(el.id).set(el.body);
     });
     alert('Success!')
+  }
+
+  const handleFileChosen = (file) => {
+    fileReader = new FileReader();
+    // fileReader.onloadend = handleFileRead;
+    fileReader.readAsText(file);
   };
 
   return (
