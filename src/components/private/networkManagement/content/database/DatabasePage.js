@@ -103,7 +103,7 @@ class DatabasePage extends Component {
 
   render() {
     return (
-        <div>
+        <div class="record">
             <Database />
             <button onClick={this.handleSaveToPC}>Export to file</button>
         </div>
