@@ -14,6 +14,7 @@ const RegisterIPForm = (props) => {
     event.preventDefault();
     const data = new FormData(event.target);
     props.handleSubmit(data);
+    event.target.reset();
   };
 
   return (

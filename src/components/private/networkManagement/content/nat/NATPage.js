@@ -136,7 +136,7 @@ class NATPage extends Component {
               />)}
         </div>
     ) : (
-        <div>
+        <div className='record'>
           <div>Add host and network IP first.</div>
         </div>
     );
