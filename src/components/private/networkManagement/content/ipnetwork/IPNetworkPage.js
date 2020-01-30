@@ -54,10 +54,6 @@ class IPNetworkPage extends Component {
         .map(el => (
                     {id: el[0], body: el[1]}
                 ));
-      if(snap.val() != null && snap.val() !== undefined){
-      let result = Object.entries(snap.val()).map(el => (
-          {id: el[0], body: el[1]}
-      ));
       this.setState({
         data: result
       });
