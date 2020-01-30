@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import RegisterDevice from "./RegisterDevice";
 import database from "../../../../../utils/database";
+<<<<<<< HEAD
 import { useAuth0 } from "../../../../../auth/react-auth0-spa";
 import "./DevicePage.css"
+=======
+import {useAuth0} from "../../../../../auth/react-auth0-spa";
+>>>>>>> b186a77cb236c12dd95e655f97db87aadd26ad41
 
 class DevicePage extends Component {
 
@@ -26,6 +30,9 @@ class DevicePage extends Component {
   }
 
   updateHostList = () => {
+
+    console.info(this.props.user);
+
     database.ref('host').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val()).map(el => {
