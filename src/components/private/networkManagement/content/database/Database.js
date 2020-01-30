@@ -21,11 +21,12 @@ const ImportFromFileBodyComponent = (props) => {
       data.nats.map(el => {
         database.ref('/nat').child(el.id).set(el.body);
       })
+      alert('Udało się!')
   } 
 
   const handleFileChosen = (file) => {
     fileReader = new FileReader();
-    fileReader.onloadend = handleFileRead;
+    // fileReader.onloadend = handleFileRead;
     fileReader.readAsText(file);
   };
 
@@ -47,7 +48,7 @@ const ImportFromFileBodyComponent = (props) => {
                 accept='.json'
                 onChange={e => handleFileChosen(e.target.files[0])}
                 />
-                {/* <button onClick={() => console.log(props.data)}>hedasdasdqwsadhe</button> */}
+                <button onClick={handleFileRead}>Importuj</button>
     </div>
   );
 };
