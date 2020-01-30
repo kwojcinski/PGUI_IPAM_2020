@@ -21,11 +21,11 @@ const RegisterVLANForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-        <label>Opis</label>
+    <form onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
+        <label>Description</label>
         <input name="description" type="text" required minLength='3'/>
         <input hidden name="owner" defaultValue={user.sub} />
-        <button>Dodaj</button>
+        <button>Add</button>
     </form>
   );
 };

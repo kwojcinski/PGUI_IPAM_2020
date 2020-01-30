@@ -137,7 +137,7 @@ class NATPage extends Component {
         </div>
     ) : (
         <div>
-          <span>Aby dodać sieć IP musisz wcześniej dodać urządzenia i sieci IP</span>
+          <div>Add host and network IP first.</div>;
         </div>
     );
   }

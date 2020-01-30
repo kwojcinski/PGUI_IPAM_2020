@@ -43,16 +43,18 @@ class IPNetworkRecord extends Component {
             <div className="showDiv">{description}</div>
             <div className="showDiv">{vlanName}</div>
             <div className="changes">
-              <button onClick={() => this.handleClickAction('edit')}>edit</button>
-              <button onClick={() => this.handleClickAction('delete')}>delete</button>
+              <button onClick={() => this.handleClickAction('edit')}>Edit</button>
+              <button onClick={() => this.handleClickAction('delete')}>Delete</button>
             </div>
           </div>
           <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
-            <EditIPForm handleSaveEditedRec={this.handleSaveEditedRec} {...this.props}/>
+            <EditIPForm handleSaveEditedRec={this.handleSaveEditedRec}
+                        cancel={() => this.handleClickAction('edit')}
+                        {...this.props}/>
           </div>
           <div hidden={!this.state.showDeleteConf} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
-            <button onClick={() => this.handleClickAction('delete')}>Anuluj</button>
-            <button onClick={() => this.props.handleDelete(id)}>Potwierdź</button>
+            <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
+            <button onClick={() => this.props.handleDelete(id)}>Confirm</button>
           </div>
         </>
     );

@@ -49,7 +49,7 @@ class EditNATForm extends Component {
               )}
             </select>
           </div>
-          <button type='button' onClick={() => this.handleClickAction('edit')}>Anuluj</button>
+          <button type='button' onClick={() => this.props.cancel()}>Anuluj</button>
           <button type='submit'>Zapisz</button>
         </form>
     );

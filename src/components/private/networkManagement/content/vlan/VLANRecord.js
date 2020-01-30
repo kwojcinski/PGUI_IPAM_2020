@@ -45,7 +45,8 @@ class VLANRecord extends Component {
           </div>
         </div>
         <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
-          <EditVLANForm handleSaveEditedRec={this.handleSaveEditedRec} cancel={() => this.handleClickAction('edit')}
+          <EditVLANForm handleSaveEditedRec={this.handleSaveEditedRec}
+                        cancel={() => this.handleClickAction('edit')}
                         {...this.props}/>
         </div>
         <div hidden={!this.state.showDeleteConf}

@@ -52,7 +52,9 @@ class NATRecord extends Component {
             </div>
           </div>
           <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
-            <EditNATForm handleSaveEditedRec={this.handleSaveEditedRec} {...this.props}/>
+            <EditNATForm handleSaveEditedRec={this.handleSaveEditedRec}
+                         cancel={() => this.handleClickAction('edit')}
+                         {...this.props}/>
           </div>
           <div hidden={!this.state.showDeleteConf}
                style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>

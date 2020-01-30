@@ -21,7 +21,7 @@ const ImportFromFileBodyComponent = (props) => {
       data.nats.map(el => {
         database.ref('/nat').child(el.id).set(el.body);
       })
-      alert('Udało się!')
+      alert('Success!')
   } 
 
   const handleFileChosen = (file) => {
@@ -48,7 +48,7 @@ const ImportFromFileBodyComponent = (props) => {
                 accept='.json'
                 onChange={e => handleFileChosen(e.target.files[0])}
                 />
-                <button onClick={handleFileRead}>Importuj</button>
+                <button onClick={handleFileRead}>Import</button>
     </div>
   );
 };

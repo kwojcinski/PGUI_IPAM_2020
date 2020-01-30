@@ -6,8 +6,8 @@ const Menu = () => {
   return (
       <Fragment>
         <menu className='leftMenu'>
-          <MenuLink linkTo='/network' description='Profil'/>
-          <MenuLink linkTo='/network/Device' description='Urządzenia'/>
+          <MenuLink linkTo='/network' description='Profile'/>
+          <MenuLink linkTo='/network/Device' description='Host'/>
           <MenuLink linkTo='/network/NAT' description='NAT'/>
           <MenuLink linkTo='/network/VLAN' description='VLAN'/>
           <MenuLink linkTo='/network/IP' description='IP'/>

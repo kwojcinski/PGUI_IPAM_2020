@@ -114,7 +114,7 @@ class IPNetworkPage extends Component {
                   }
                 </>
             ) : (
-                <span>Aby dodać sieć IP musisz wcześniej zdefiniować VLAN</span>
+                <span>To add IP network you have to define VLAN first.</span>
             )
           }
         </div>
