@@ -1,6 +1,6 @@
-.showDiv {
+.showNatDiv {
     display: inline-grid;
-    width: 20%;
+    width: 15%;
 }
 
 .buttonDiv {
@@ -12,7 +12,7 @@
     display: inline;
 }
 
-.inputAdd{
-    width: 50%;
+.inputNatAdd{
+    width: 80%;
     margin: 0 auto;
 }

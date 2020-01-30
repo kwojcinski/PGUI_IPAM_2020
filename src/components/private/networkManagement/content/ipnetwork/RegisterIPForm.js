@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuth0 } from "../../../../../auth/react-auth0-spa";
+import "./IPNetworkPage.css"
 
 
 const RegisterIPForm = (props) => {
@@ -16,22 +17,28 @@ const RegisterIPForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
+      <div className="showDiv">
         <label htmlFor="ip">IP</label>
-        <input id="ip" name="ip" type="text" />
-
+        <input class="inputAdd" id="ip" name="ip" type="text" />
+        </div>
+        <div className="showDiv">
         <label htmlFor="description">Description</label>
-        <input id="description" name="description" type="text" />
-
+        <input  class="inputAdd" id="description" name="description" type="text" />
+        </div>
+        <div className="showDiv">
         <label htmlFor="vlan">VLAN</label>
-        <select name="vlan">
+        <select  class="inputAdd" name="vlan">
             <option value="0">Choose VLAN</option>
             {props.data.map(rec =>
                 <option key={rec.id} value={rec.id}>{rec.body.description}</option>
             )}
         </select>
+        </div>
         <input hidden name="owner" defaultValue={user.sub} />
+        <div className="buttonDiv">
         <button>Add</button>
+        </div>
     </form>
   );
 };

@@ -41,14 +41,14 @@ class NATRecord extends Component {
     return (
         <div>
           <div>
-            <div className="showDiv">{name}</div>
-            <div className="showDiv">{devName}</div>
-            <div className="showDiv">{description}</div>
-            <div className="showDiv">{externalIP}</div>
-            <div className="showDiv">{ipName}</div>
+            <div className="showNatDiv">{name}</div>
+            <div className="showNatDiv">{devName}</div>
+            <div className="showNatDiv">{description}</div>
+            <div className="showNatDiv">{externalIP}</div>
+            <div className="showNatDiv">{ipName}</div>
             <div className="changes">
-              <button onClick={() => this.handleClickAction('edit')}>edit</button>
-              <button onClick={() => this.handleClickAction('delete')}>delete</button>
+              <button onClick={() => this.handleClickAction('edit')}>Edit</button>
+              <button onClick={() => this.handleClickAction('delete')}>Delete</button>
             </div>
           </div>
           <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
@@ -58,8 +58,8 @@ class NATRecord extends Component {
           </div>
           <div hidden={!this.state.showDeleteConf}
                style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
-            <button onClick={() => this.handleClickAction('delete')}>Anuluj</button>
-            <button onClick={() => this.props.handleDelete(id)}>Potwierdź</button>
+            <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
+            <button onClick={() => this.props.handleDelete(id)}>Confirm</button>
           </div>
         </div>
     )
