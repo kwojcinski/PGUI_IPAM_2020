@@ -35,7 +35,7 @@ class DeviceRecord extends Component {
   render() {
     let {id, ip, name, description} = this.props;
     return (
-        <>
+        <div className='record'>
           <div>
             <div className="showDiv">{ip}</div>
             <div className="showDiv">{name}</div>
@@ -54,7 +54,7 @@ class DeviceRecord extends Component {
             <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
             <button onClick={() => this.props.handleDelete(id)}>Confirm</button>
           </div>
-        </>
+        </div>
     );
   }
 }

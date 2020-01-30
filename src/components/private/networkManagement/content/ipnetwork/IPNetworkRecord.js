@@ -37,7 +37,7 @@ class IPNetworkRecord extends Component {
     let vlanName = vlans.filter(rec => rec.id === vlan)[0];
     vlanName = vlanName === undefined ? 'Brak' : vlanName.body.description;
     return (
-        <>
+        <div className='record'>
           <div>
             <div className="showDiv">{ip}</div>
             <div className="showDiv">{description}</div>
@@ -56,7 +56,7 @@ class IPNetworkRecord extends Component {
             <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
             <button onClick={() => this.props.handleDelete(id)}>Confirm</button>
           </div>
-        </>
+        </div>
     );
   }
 }

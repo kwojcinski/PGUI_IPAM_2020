@@ -15,3 +15,25 @@
     background-size: cover;
 
 }
+
+.new-form {
+    width: 70%;
+    background-color: lightgrey;
+    margin: 10px auto;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 1.5em;
+}
+
+.new-nat-form button {
+    width: 200px;
+    border-radius: 2em;
+}
+
+.record {
+    background-color: dimgrey;
+}

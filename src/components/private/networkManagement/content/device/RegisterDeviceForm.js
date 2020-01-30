@@ -17,7 +17,7 @@ const RegisterDeviceForm = (props) => {
   };
 
   return (
-      <form className='new-device-form' onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
+      <form className='new-form' onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
         <div className="showDiv">
           <label htmlFor="ip">IP Address</label>
           <input className="inputAdd" id="ip" name="ip" type="text"/>
