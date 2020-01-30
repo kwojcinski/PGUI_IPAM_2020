@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { useAuth0 } from "../../../../../auth/react-auth0-spa";
 import {Link} from "react-router-dom";
+import "./DevicePage.css"
 
 const RegisterDevice = (props) => {
   const { loading, user } = useAuth0();
@@ -17,17 +18,22 @@ const RegisterDevice = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div class="showDiv">
         <label htmlFor="ip">Adres IP</label>
-        <input id="ip" name="ip" type="text" />
-
+        <input class="inputAdd" id="ip" name="ip" type="text" />
+        </div>
+        <div class="showDiv">
         <label htmlFor="name">Nazwa urządzenia</label>
-        <input id="name" name="name" type="text" />
-
+        <input class="inputAdd" id="name" name="name" type="text" />
+        </div>
+        <div class="showDiv">
         <label htmlFor="description">Opis urządzenia</label>
-        <input id="description" name="description" type="text" />
-
+        <input class="inputAdd" id="description" name="description" type="text" />
+        </div>
         <input hidden name="owner" defaultValue={user.sub} />
+        <div class="buttonDiv">
         <button>Dodaj</button>
+        </div>
     </form>
   );
 };
