@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import RegisterDevice from "./RegisterDevice";
 import database from "../../../../../utils/database";
-import {useAuth0} from "../../../../../auth/react-auth0-spa";
 
 class DevicePage extends Component {
 

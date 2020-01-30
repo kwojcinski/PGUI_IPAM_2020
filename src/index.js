@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import * as firebase from "firebase";
-import firebase_config from "./config/firebase_config.json";
 import { Auth0Provider } from "./auth/react-auth0-spa";
 import auth_config from "./config/auth_config.json";
 import history from "./utils/history";
