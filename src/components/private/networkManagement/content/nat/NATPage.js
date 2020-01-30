@@ -87,12 +87,11 @@ class NATPage extends Component {
     if (this.state.hostData.length > 0 && this.state.ipData.length > 0) {
       button = <DefineNAT handleSubmit={this.addNewNAT} ipData={this.state.ipData} hostData={this.state.hostData}/>
     } else {
-      button = <div>Dodaj urządzenia i sieci IP</div>;
+      button = <div>Add host and network IP first.</div>;
     }
     return (
         <div>
           {button}
-          <div>Lista dodanych</div>
           <ul>
             {this.state.data.map(rec =>
                 <li key={rec.id}>{rec.body.name}</li>

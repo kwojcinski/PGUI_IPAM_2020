@@ -20,18 +20,18 @@ const RegisterIP = (props) => {
         <label htmlFor="ip">IP</label>
         <input id="ip" name="ip" type="text" />
 
-        <label htmlFor="description">Opis</label>
+        <label htmlFor="description">Description</label>
         <input id="description" name="description" type="text" />
 
         <label htmlFor="vlan">VLAN</label>
         <select name="vlan">
-            <option value="0">Wybierz VLAN</option>
+            <option value="0">Choose VLAN</option>
             {props.data.map(rec =>
                 <option key={rec.id} value={rec.id}>{rec.body.description}</option>
             )}
         </select>
         <input hidden name="owner" defaultValue={user.sub} />
-        <button>Dodaj</button>
+        <button>Add</button>
     </form>
   );
 };

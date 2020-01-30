@@ -39,7 +39,6 @@ class VLANPage extends Component {
     return (
         <div>
           <RegisterVLAN handleSubmit={this.addNewVLAN}/>
-          <div>Lista dodanych</div>
           <ul>
             {this.state.data.map(rec =>
                 <li key={rec.id}>{rec.body.description}</li>

@@ -87,7 +87,7 @@ class IPNetworkPage extends Component {
           {
             this.state.vlanData.length > 0 ?
                 <RegisterIP handleSubmit={this.addNewIP} data={this.state.vlanData}/> :
-                <span>Aby dodać sieć IP musisz wcześniej zdefiniować VLAN</span>
+                <span>To add IP network you have to define VLAN first.</span>
           }
           {
             this.state.data.map(rec =>

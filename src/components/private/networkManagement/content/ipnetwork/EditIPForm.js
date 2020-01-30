@@ -23,7 +23,7 @@ class EditIPForm extends Component {
             <input id="new-ip" name="ip" type="text" value={this.state.ip}
                    onChange={event => this.handleChange(event, 'ip')} required/>
 
-            <label htmlFor="description">Opis</label>
+            <label htmlFor="description">Description</label>
             <input id="new-description" name="description" type="text" value={this.state.description}
                    onChange={event => this.handleChange(event, 'description')} required/>
 
@@ -34,8 +34,8 @@ class EditIPForm extends Component {
               )}
             </select>
           </div>
-          <button type='button' onClick={() => this.handleClickAction('edit')}>Anuluj</button>
-          <button type='submit'>Zapisz</button>
+          <button type='button' onClick={() => this.handleClickAction('edit')}>Cancel</button>
+          <button type='submit'>Save</button>
         </form>
     );
   };
