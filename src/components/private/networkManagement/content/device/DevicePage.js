@@ -53,6 +53,10 @@ class DevicePage extends Component {
         this.setState({
           data: result
         });
+      } else {
+        this.setState({
+          data: []
+        });
       }
     });
   };

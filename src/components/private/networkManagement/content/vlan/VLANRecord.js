@@ -33,7 +33,7 @@ class VLANRecord extends Component {
   };
 
   render() {
-    let {id, description, owner} = this.props;
+    let {id, description} = this.props;
     return (<>
       <div className='record'>
         <div style={{marginBottom: '0.5%', paddingTop: '0.5%', paddingBottom: '0.5%'}}>

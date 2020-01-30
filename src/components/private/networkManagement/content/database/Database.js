@@ -1,9 +1,7 @@
 import React from "react";
-import {useAuth0} from "../../../../../auth/react-auth0-spa";
 import database from "../../../../../utils/database";
 
-const ImportFromFileBodyComponent = (props) => {
-  const {loading, user} = useAuth0();
+const ImportFromFileBodyComponent = () => {
   let fileReader;
 
   const handleFileRead = (e) => {
@@ -22,11 +20,10 @@ const ImportFromFileBodyComponent = (props) => {
       database.ref('/nat').child(el.id).set(el.body);
     });
     alert('Success!')
-  }
+  };
 
   const handleFileChosen = (file) => {
     fileReader = new FileReader();
-    // fileReader.onloadend = handleFileRead;
     fileReader.readAsText(file);
   };
 
