@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RegisterDevice from "./RegisterDevice";
+import RegisterDeviceForm from "./RegisterDeviceForm";
 import database from "../../../../../utils/database";
 
 import "./DevicePage.css"
@@ -60,7 +60,7 @@ class DevicePage extends Component {
   render() {
     return (
         <div>
-          <RegisterDevice handleSubmit={this.addNewHost}/>
+          <RegisterDeviceForm handleSubmit={this.addNewHost}/>
           {
             this.state.data.map(rec =>
                 <DeviceRecord
@@ -69,7 +69,7 @@ class DevicePage extends Component {
                     ip={rec.body.ip}
                     name={rec.body.name}
                     description={rec.body.description}
-                    hadnleEdit={this.editHost}
+                    handleEdit={this.editHost}
                     handleDelete={this.removeHost}
                 />
             )

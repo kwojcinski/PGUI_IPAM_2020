@@ -2,7 +2,7 @@ import React from "react";
 import {useAuth0} from "../../../../../auth/react-auth0-spa";
 import "./DevicePage.css"
 
-const RegisterDevice = (props) => {
+const RegisterDeviceForm = (props) => {
   const {loading, user} = useAuth0();
 
   if (loading || !user) {
@@ -39,4 +39,4 @@ const RegisterDevice = (props) => {
   );
 };
 
-export default RegisterDevice;
+export default RegisterDeviceForm;

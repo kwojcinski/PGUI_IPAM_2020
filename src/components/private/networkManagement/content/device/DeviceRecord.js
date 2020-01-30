@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import "./DeviceRecord.css"
+import EditDeviceForm from "./EditDeviceForm";
 
 class DeviceRecord extends Component {
 
@@ -25,44 +26,31 @@ class DeviceRecord extends Component {
 
   handleSaveEditedRec = (e, key) => {
     e.preventDefault();
-    this.props.hadnleEdit(key, new FormData(e.target));
+    let data = new FormData(e.target);
+    e.target.reset();
+    this.props.handleEdit(key, data);
+    this.handleClickAction('edit')
   };
 
   render() {
+    let {id, ip, name, description} = this.props;
     return (
         <>
           <div>
-            <div className="showDiv">{this.props.ip}</div>
-            <div className="showDiv">{this.props.name}</div>
-            <div className="showDiv">{this.props.description}</div>
+            <div className="showDiv">{ip}</div>
+            <div className="showDiv">{name}</div>
+            <div className="showDiv">{description}</div>
             <div className="changes">
               <button onClick={() => this.handleClickAction('edit')}>edit</button>
               <button onClick={() => this.handleClickAction('delete')}>delete</button>
             </div>
           </div>
           <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
-            <form onSubmit={(event) => this.handleSaveEditedRec(event, this.props.id)} style={{marginBottom: "1%"}}>
-              <div>
-                <div className="showDiv">
-                  <label htmlFor="ip">Adres IP</label>
-                  <input className="inputAdd" id="new-ip" name="ip" type="text" required/>
-                </div>
-                <div className="showDiv">
-                  <label htmlFor="name">Nazwa urządzenia</label>
-                  <input className="inputAdd" id="new-name" name="name" type="text" required/>
-                </div>
-                <div className="showDiv">
-                  <label htmlFor="description">Opis urządzenia</label>
-                  <input className="inputAdd" id="new-description" name="description" type="text" required/>
-                </div>
-              </div>
-              <button type='button' onClick={() => this.handleClickAction('edit')}>Anuluj</button>
-              <button type='submit'>Zapisz</button>
-            </form>
+            <EditDeviceForm handleSaveEditedRec={this.handleSaveEditedRec} {...this.props}/>
           </div>
           <div hidden={!this.state.showDeleteConf} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
             <button onClick={() => this.handleClickAction('delete')}>Anuluj</button>
-            <button onClick={() => this.props.handleDelete(this.props.id)}>Potwierdź</button>
+            <button onClick={() => this.props.handleDelete(id)}>Potwierdź</button>
           </div>
         </>
     );
