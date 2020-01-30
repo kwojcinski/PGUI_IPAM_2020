@@ -105,7 +105,7 @@ class DatabasePage extends Component {
     return (
         <div>
             <Database />
-            <button onClick={this.handleSaveToPC}>dasd</button>
+            <button onClick={this.handleSaveToPC}>Eksportuj do pliku</button>
         </div>
     );
   }
