@@ -1,7 +1,7 @@
 .content{
     position: fixed;
     top: 50px;
-    left: 220px; right: 0;
+    left: 144px; right: 0;
     bottom: 0;
 
     width: calc(100% - 220px);
