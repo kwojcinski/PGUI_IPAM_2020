@@ -1,6 +1,7 @@
 import React, {Fragment} from "react";
 
 const ProfilePAge = props => {
+  let {user} = props;
   return (
       <Fragment>
         <div>

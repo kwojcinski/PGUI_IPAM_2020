@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import RegisterDevice from "./RegisterDevice";
 import database from "../../../../../utils/database";
 
-import { useAuth0 } from "../../../../../auth/react-auth0-spa";
 import "./DevicePage.css"
+import DeviceRecord from "./DeviceRecord";
 
 class DevicePage extends Component {
 
@@ -21,6 +21,22 @@ class DevicePage extends Component {
     this.updateHostList();
   };
 
+  editHost = (key, hostData) => {
+    let host = {};
+    for (let entry of hostData.entries()) {
+      host[entry[0]] = entry[1];
+    }
+    database.ref('/host/' + key).update(host).then(
+      this.updateHostList()
+    );
+  };
+
+  removeHost = (key) => {
+    database.ref('/host/' + key).remove().then(
+        this.updateHostList()
+    );
+  };
+
   componentDidMount() {
     this.updateHostList();
   }
@@ -30,10 +46,10 @@ class DevicePage extends Component {
     database.ref('host').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
-        .filter(el => el[1].owner === this.props.user.sub)
-        .map(el => (
-                    {id: el[0], body: el[1]}
-                ));
+            .filter(el => el[1].owner === this.props.user.sub)
+            .map(el => (
+                {id: el[0], body: el[1]}
+            ));
         this.setState({
           data: result
         });
@@ -45,14 +61,19 @@ class DevicePage extends Component {
     return (
         <div>
           <RegisterDevice handleSubmit={this.addNewHost}/>
-            {this.state.data.map(rec =>
-            <div>
-                <div class="showDiv" key={rec.id}>{rec.body.ip}</div>
-                <div class="showDiv" key={rec.id}>{rec.body.name}</div>
-                <div class="showDiv" key={rec.id}>{rec.body.description}</div>
-                <div class="changes">Zmiany</div>
-                </div>
-            )}
+          {
+            this.state.data.map(rec =>
+                <DeviceRecord
+                    key={rec.id}
+                    id={rec.id}
+                    ip={rec.body.ip}
+                    name={rec.body.name}
+                    description={rec.body.description}
+                    hadnleEdit={this.editHost}
+                    handleDelete={this.removeHost}
+                />
+            )
+          }
         </div>
     );
   }

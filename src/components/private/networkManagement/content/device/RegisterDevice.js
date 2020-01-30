@@ -1,9 +1,9 @@
 import React from "react";
-import { useAuth0 } from "../../../../../auth/react-auth0-spa";
+import {useAuth0} from "../../../../../auth/react-auth0-spa";
 import "./DevicePage.css"
 
 const RegisterDevice = (props) => {
-  const { loading, user } = useAuth0();
+  const {loading, user} = useAuth0();
 
   if (loading || !user) {
     return <div>Loading...</div>;
@@ -13,28 +13,29 @@ const RegisterDevice = (props) => {
     event.preventDefault();
     const data = new FormData(event.target);
     props.handleSubmit(data);
+    event.target.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit}  style={{marginBottom: "1%"}}>
-      <div class="showDiv">
+      <form onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
+        <div className="showDiv">
 
-        <label htmlFor="ip">Adres IP</label>
-        <input className="inputAdd" id="ip" name="ip" type="text" />
+          <label htmlFor="ip">Adres IP</label>
+          <input className="inputAdd" id="ip" name="ip" type="text"/>
         </div>
         <div className="showDiv">
-        <label htmlFor="name">Nazwa urządzenia</label>
-        <input className="inputAdd" id="name" name="name" type="text" />
+          <label htmlFor="name">Nazwa urządzenia</label>
+          <input className="inputAdd" id="name" name="name" type="text"/>
         </div>
         <div className="showDiv">
-        <label htmlFor="description">Opis urządzenia</label>
-        <input className="inputAdd" id="description" name="description" type="text" />
+          <label htmlFor="description">Opis urządzenia</label>
+          <input className="inputAdd" id="description" name="description" type="text"/>
         </div>
-        <input hidden name="owner" defaultValue={user.sub} />
+        <input hidden name="owner" defaultValue={user.sub}/>
         <div className="buttonDiv">
-        <button>Dodaj</button>
+          <button>Dodaj</button>
         </div>
-    </form>
+      </form>
   );
 };
 
