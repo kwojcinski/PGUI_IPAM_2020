@@ -27,7 +27,7 @@ class DevicePage extends Component {
       host[entry[0]] = entry[1];
     }
     database.ref('/host/' + key).update(host).then(
-      this.updateHostList()
+        this.updateHostList()
     );
   };
 

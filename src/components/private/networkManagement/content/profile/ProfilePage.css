@@ -1,4 +1,4 @@
-.profile-title{
+.profile-title {
     margin: 20px auto;
     padding: 10px;
     border-radius: 1em;
@@ -8,7 +8,7 @@
     opacity: 0.9;
 }
 
-.profile-user-data{
+.profile-user-data {
     display: flex;
     width: 700px !important;
     height: 200px !important;

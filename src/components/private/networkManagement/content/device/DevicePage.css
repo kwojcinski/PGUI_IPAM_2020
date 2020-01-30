@@ -10,7 +10,7 @@
     border-radius: 1em;
 }
 
-.buttonDiv-host button{
+.buttonDiv-host button {
     border-radius: 1em;
     width: 100px;
 }
@@ -19,7 +19,7 @@
     display: inline;
 }
 
-.inputAdd-host{
+.inputAdd-host {
     width: 50%;
     margin: 0 auto;
 }

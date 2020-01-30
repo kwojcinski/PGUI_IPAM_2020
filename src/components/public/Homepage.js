@@ -4,7 +4,7 @@ import background from '../../resources/network-image.jpg'
 
 const Homepage = () => {
   return (
-      <div className='Homepage' style={{backgroundImage:`url(${background})`}}>
+      <div className='Homepage' style={{backgroundImage: `url(${background})`}}>
         <h1 className='title'> Aplikacja do ewidencji zasobów sieciowych - IPAM </h1>
 
         <article>

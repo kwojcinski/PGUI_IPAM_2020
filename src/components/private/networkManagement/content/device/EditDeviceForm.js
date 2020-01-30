@@ -31,7 +31,8 @@ class EditDeviceForm extends Component {
             </div>
             <div className="showDiv">
               <label htmlFor="description">Host description</label>
-              <input className="inputAdd" id="new-description" name="description" type="text" value={this.state.description}
+              <input className="inputAdd" id="new-description" name="description" type="text"
+                     value={this.state.description}
                      onChange={event => this.handleChange(event, 'description')} required/>
             </div>
           </div>

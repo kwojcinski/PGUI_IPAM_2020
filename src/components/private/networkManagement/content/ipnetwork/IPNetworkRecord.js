@@ -38,7 +38,7 @@ class IPNetworkRecord extends Component {
     vlanName = vlanName === undefined ? 'Brak' : vlanName.body.description;
     return (
         <div className='record'>
-          <div style={{ paddingTop: '0.5%', paddingBottom: '0.5%'}}>
+          <div style={{paddingTop: '0.5%', paddingBottom: '0.5%'}}>
             <div className="showDiv-ip">{ip}</div>
             <div className="showDiv-ip">{description}</div>
             <div className="showDiv-ip">{vlanName}</div>

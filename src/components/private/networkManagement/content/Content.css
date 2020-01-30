@@ -1,7 +1,8 @@
-.content{
+.content {
     position: fixed;
     top: 50px;
-    left: 164px; right: 0;
+    left: 164px;
+    right: 0;
     bottom: 0;
 
     width: calc(100% - 164px);
@@ -34,7 +35,7 @@
     border-radius: 2em;
 }
 
-.buttonDiv button{
+.buttonDiv button {
     border-radius: 1em;
     width: 100px;
 }

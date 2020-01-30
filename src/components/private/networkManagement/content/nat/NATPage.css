@@ -8,18 +8,19 @@
     vertical-align: bottom;
     margin-left: 1%;
 }
+
 .changes {
     display: inline;
 }
 
-.inputNatAdd{
+.inputNatAdd {
     width: 80%;
     margin: 0 auto;
     height: 2em;
     border-radius: 0.5em;
 }
 
-.nat-page{
+.nat-page {
     text-align: center;
 }
 

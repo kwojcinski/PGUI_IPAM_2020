@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import database from "../../../../../utils/database";
 import Database from "./Database"
 
-import { useAuth0 } from "../../../../../auth/react-auth0-spa";
+import {useAuth0} from "../../../../../auth/react-auth0-spa";
 
 class DatabasePage extends Component {
 
@@ -17,6 +17,7 @@ class DatabasePage extends Component {
     };
 
   }
+
   handleSaveToPC = jsonData => {
     const fileData1 = JSON.stringify(this.state.hostData);
     const fileData2 = JSON.stringify(this.state.natData);
@@ -30,6 +31,7 @@ class DatabasePage extends Component {
     link.href = url;
     link.click();
   }
+
   componentDidMount() {
     this.updateHostList();
     this.updateIPList();
@@ -42,10 +44,10 @@ class DatabasePage extends Component {
     database.ref('host').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
-        .filter(el => el[1].owner === this.props.user.sub)
-        .map(el => (
-                    {id: el[0], body: el[1]}
-                ));
+            .filter(el => el[1].owner === this.props.user.sub)
+            .map(el => (
+                {id: el[0], body: el[1]}
+            ));
         this.setState({
           hostData: result
         });
@@ -58,10 +60,10 @@ class DatabasePage extends Component {
     database.ref('nat').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
-        .filter(el => el[1].owner === this.props.user.sub)
-        .map(el => (
-                    {id: el[0], body: el[1]}
-                ));
+            .filter(el => el[1].owner === this.props.user.sub)
+            .map(el => (
+                {id: el[0], body: el[1]}
+            ));
         this.setState({
           natData: result
         });
@@ -74,10 +76,10 @@ class DatabasePage extends Component {
     database.ref('ip').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
-        .filter(el => el[1].owner === this.props.user.sub)
-        .map(el => (
-                    {id: el[0], body: el[1]}
-                ));
+            .filter(el => el[1].owner === this.props.user.sub)
+            .map(el => (
+                {id: el[0], body: el[1]}
+            ));
         this.setState({
           ipData: result
         });
@@ -90,10 +92,10 @@ class DatabasePage extends Component {
     database.ref('vlan').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
-        .filter(el => el[1].owner === this.props.user.sub)
-        .map(el => (
-                    {id: el[0], body: el[1]}
-                ));
+            .filter(el => el[1].owner === this.props.user.sub)
+            .map(el => (
+                {id: el[0], body: el[1]}
+            ));
         this.setState({
           vlanData: result
         });
@@ -104,8 +106,8 @@ class DatabasePage extends Component {
   render() {
     return (
         <div className="record">
-            <Database />
-            <button onClick={this.handleSaveToPC}>Export to file</button>
+          <Database/>
+          <button onClick={this.handleSaveToPC}>Export to file</button>
         </div>
     );
   }

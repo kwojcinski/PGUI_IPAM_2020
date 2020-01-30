@@ -30,6 +30,7 @@
     width: 80%;
     margin: 10%;
 }
+
 .menuLink button:visited, .menuLink button:focus, .menuLink button:active {
     background: #3c3c3c;
     outline: 0;
