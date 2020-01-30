@@ -32,10 +32,13 @@ class IPNetworkPage extends Component {
 
   updateVLANlist = () => {
     this.database.ref('vlan').once('value').then(snap => {
-      if(snap.val() != null && snap.val() !== undefined){
-      let result = Object.entries(snap.val()).map(el => (
-          {id: el[0], body: el[1]}
-      ));
+      if(snap.val() != null && snap.val() != undefined){
+        let result = Object.entries(snap.val())
+        .filter(el => el[1].owner === this.props.user.sub)
+        .map(el => (
+                    {id: el[0], body: el[1]}
+                ));
+
       this.setState({
         vlanData: result
       });
@@ -45,10 +48,12 @@ class IPNetworkPage extends Component {
 
   updateIPlist = () => {
     this.database.ref('ip').once('value').then(snap => {
-      if(snap.val() != null && snap.val() !== undefined){
-      let result = Object.entries(snap.val()).map(el => (
-          {id: el[0], body: el[1]}
-      ));
+      if(snap.val() != null && snap.val() != undefined){
+        let result = Object.entries(snap.val())
+        .filter(el => el[1].owner === this.props.user.sub)
+        .map(el => (
+                    {id: el[0], body: el[1]}
+                ));
       this.setState({
         data: result
       });

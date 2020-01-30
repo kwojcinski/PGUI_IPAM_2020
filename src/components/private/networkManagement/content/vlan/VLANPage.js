@@ -24,9 +24,11 @@ class VLANPage extends Component {
 
   updateVLANList = () => {
     database.ref('vlan').once('value').then(snap => {
-      let result = Object.entries(snap.val()).map(el => (
-          {id: el[0], body: el[1]}
-      ));
+      let result = Object.entries(snap.val())
+      .filter(el => el[1].owner === this.props.user.sub)
+      .map(el => (
+                  {id: el[0], body: el[1]}
+              ));
       this.setState({
         data: result
       });

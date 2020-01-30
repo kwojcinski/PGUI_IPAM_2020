@@ -16,8 +16,9 @@ const RegisterDevice = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="showDiv">
+    <form onSubmit={handleSubmit}  style={{marginBottom: "1%"}}>
+      <div class="showDiv">
+
         <label htmlFor="ip">Adres IP</label>
         <input className="inputAdd" id="ip" name="ip" type="text" />
         </div>
