@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import database from "../../../../../utils/database";
 import Database from "./Database"
 
-import {useAuth0} from "../../../../../auth/react-auth0-spa";
-
 class DatabasePage extends Component {
 
   constructor(props) {

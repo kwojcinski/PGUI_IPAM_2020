@@ -13,13 +13,14 @@ const DefineNATForm = (props) => {
     event.preventDefault();
     const data = new FormData(event.target);
     props.handleSubmit(data);
+    event.target.reset();
   };
 
   return (
       <form className='new-form' onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
         <div className="showNatDiv">
           <label htmlFor="name">Name</label>
-          <input className="inputNatAdd" id="name" name="name" type="text"/>
+          <input className="inputNatAdd" id="name" name="name" type="text" required/>
         </div>
         <div className="showNatDiv">
           <label htmlFor="device">Host</label>

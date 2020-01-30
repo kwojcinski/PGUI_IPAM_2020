@@ -80,6 +80,10 @@ class NATPage extends Component {
         this.setState({
           data: result,
         });
+      } else {
+        this.setState({
+          data: [],
+        });
       }
     });
   };
@@ -136,7 +140,7 @@ class NATPage extends Component {
               />)}
         </div>
     ) : (
-        <div>
+        <div className='record'>
           <div>Add host and network IP first.</div>
         </div>
     );
