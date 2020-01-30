@@ -16,3 +16,24 @@
     width: 50%;
     margin: 0 auto;
 }
+
+.device-page {
+    text-align: center;
+}
+
+.new-device-form {
+    width: 70%;
+    background-color: lightgrey;
+    margin: 10px auto;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-items: center;
+    padding: 20px;
+    border-radius: 1.5em;
+}
+
+.new-device-form button {
+    width: 200px;
+    border-radius: 2em;
+}

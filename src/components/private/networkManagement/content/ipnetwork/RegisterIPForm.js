@@ -1,9 +1,9 @@
 import React from "react";
-import { useAuth0 } from "../../../../../auth/react-auth0-spa";
+import {useAuth0} from "../../../../../auth/react-auth0-spa";
 
 
 const RegisterIPForm = (props) => {
-  const { loading, user } = useAuth0();
+  const {loading, user} = useAuth0();
 
   if (loading || !user) {
     return <div>Loading...</div>;
@@ -16,23 +16,29 @@ const RegisterIPForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-        <label htmlFor="ip">IP</label>
-        <input id="ip" name="ip" type="text" />
-
-        <label htmlFor="description">Description</label>
-        <input id="description" name="description" type="text" />
-
-        <label htmlFor="vlan">VLAN</label>
-        <select name="vlan">
+      <form className='new-ip-form' onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
+        <div className="showDiv">
+          <label>IP</label>
+          <input className="inputAdd" name="ip" type="text"/>
+        </div>
+        <div className="showDiv">
+          <label>Description</label>
+          <input className="inputAdd" name="description" type="text"/>
+        </div>
+        <div className="showDiv">
+          <label>VLAN</label>
+          <select className="inputAdd" name="vlan">
             <option value="0">Choose VLAN</option>
             {props.data.map(rec =>
                 <option key={rec.id} value={rec.id}>{rec.body.description}</option>
             )}
-        </select>
-        <input hidden name="owner" defaultValue={user.sub} />
-        <button>Add</button>
-    </form>
+          </select>
+        </div>
+        <input hidden name="owner" defaultValue={user.sub}/>
+        <div className="buttonDiv">
+          <button >Add</button>
+        </div>
+      </form>
   );
 };
 

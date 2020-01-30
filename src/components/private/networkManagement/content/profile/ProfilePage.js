@@ -4,8 +4,8 @@ const ProfilePAge = props => {
   let {user} = props;
   return (
       <Fragment>
-        <div>
-        Managing user profile: {props.user.email}
+        <div >
+          Managing user profile: {props.user.email}
         </div>
         <div style={{display: "inline"}}>
           <img src={user.picture} alt="NetworkManagment" height='50px' width='50px'/>

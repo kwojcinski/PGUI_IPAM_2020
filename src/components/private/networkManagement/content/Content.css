@@ -1,15 +1,17 @@
 .content{
     position: fixed;
     top: 50px;
-    left: 144px; right: 0;
+    left: 164px; right: 0;
     bottom: 0;
 
-    width: calc(100% - 220px);
-    min-width: calc(100% - 220px);
-    max-width: calc(100% - 220px);
+    width: calc(100% - 164px);
+    min-width: calc(100% - 164px);
+    max-width: calc(100% - 164px);
 
     overflow-y: auto;
     overflow-x: auto;
 
     text-align: center;
+    background-size: cover;
+
 }

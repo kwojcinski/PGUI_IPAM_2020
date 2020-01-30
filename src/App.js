@@ -7,6 +7,7 @@ import NetworkManagement from "./components/private/networkManagement/NetworkMan
 import Homepage from "./components/public/Homepage";
 import NavBar from "./components/public/NavBar";
 import history from "./utils/history";
+import background from "./resources/network-image.jpg";
 
 class App extends React.Component {
 

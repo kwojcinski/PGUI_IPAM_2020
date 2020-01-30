@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import RegisterIPForm from "./RegisterIPForm"
 import database from "../../../../../utils/database";
 import IPNetworkRecord from "./IPNetworkRecord";
+import './IPNetworkPage.css'
 
 class IPNetworkPage extends Component {
 
@@ -93,7 +94,7 @@ class IPNetworkPage extends Component {
 
   render() {
     return (
-        <div>
+        <div className='ip-page'>
           {
             this.state.vlanData.length > 0 ? (
                 <>

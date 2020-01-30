@@ -59,7 +59,7 @@ class DevicePage extends Component {
 
   render() {
     return (
-        <div>
+        <div className='device-page'>
           <RegisterDeviceForm handleSubmit={this.addNewHost}/>
           {
             this.state.data.map(rec =>
