@@ -13,7 +13,8 @@ const RegisterIP = (props) => {
     event.preventDefault();
     const data = new FormData(event.target);
     props.handleSubmit(data);
-  }; 
+  };
+
   return (
     <form onSubmit={handleSubmit}>
         <label htmlFor="ip">IP</label>

@@ -1,26 +1,46 @@
 import React, {Component} from "react";
 import RegisterIP from "./RegisterIP"
-import firebase from "firebase";
+import database from "../../../../../utils/database";
+import DeviceRecord from "../device/DeviceRecord";
+import IPNetworkRecord from "./IPNetworkRecord";
 
 class IPNetworkPage extends Component {
 
   constructor(props) {
     super(props);
-    this.database = firebase.database();
     this.state = {
       data: [],
       vlanData: []
     };
   }
 
-  addNewIP = (hostData) => {
-    let host = {};
-    for (let entry of hostData.entries()) {
-      host[entry[0]] = entry[1];
+  addNewIP = (ipData) => {
+    let ip = {};
+    for (let entry of ipData.entries()) {
+      ip[entry[0]] = entry[1];
     }
-    let key = this.database.ref('/ip').push(host).key;
-    let result = this.database.ref('ip/' + key);
+    let key = database.ref('/ip').push(ip).key;
+    let result = database.ref('ip/' + key);
     result.on("value", snap => {
+      this.updateIPlist();
+    });
+  };
+
+  editIP = (key, ipData) => {
+    let ip = {};
+    for (let entry of ipData.entries()) {
+      ip[entry[0]] = entry[1];
+    }
+    database.ref('/ip/' + key).update(ip).then(() => {
+          this.updateVLANlist();
+          this.updateIPlist();
+        }
+    );
+  };
+
+  removeIP = (key) => {
+    database.ref('/ip/' + key).remove().then(() => {
+      this.updateVLANlist();
       this.updateIPlist();
     });
   };
@@ -31,7 +51,7 @@ class IPNetworkPage extends Component {
   }
 
   updateVLANlist = () => {
-    this.database.ref('vlan').once('value').then(snap => {
+    database.ref('vlan').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
             .filter(el => el[1].owner === this.props.user.sub)
@@ -47,7 +67,7 @@ class IPNetworkPage extends Component {
   };
 
   updateIPlist = () => {
-    this.database.ref('ip').once('value').then(snap => {
+    database.ref('ip').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val())
             .filter(el => el[1].owner === this.props.user.sub)
@@ -62,21 +82,27 @@ class IPNetworkPage extends Component {
   };
 
   render() {
-    let button;
-    if (this.state.vlanData.length > 0) {
-      button = <RegisterIP handleSubmit={this.addNewIP} data={this.state.vlanData}/>
-    } else {
-      button = "";
-    }
     return (
         <div>
-          {button}
-          <div>Lista dodanych</div>
-          <ul>
-            {this.state.data.map(rec =>
-                <li key={rec.id}>{rec.body.ip}</li>
-            )}
-          </ul>
+          {
+            this.state.vlanData.length > 0 ?
+                <RegisterIP handleSubmit={this.addNewIP} data={this.state.vlanData}/> :
+                <span>Aby dodać sieć IP musisz wcześniej zdefiniować VLAN</span>
+          }
+          {
+            this.state.data.map(rec =>
+                <IPNetworkRecord
+                    key={rec.id}
+                    id={rec.id}
+                    ip={rec.body.ip}
+                    description={rec.body.description}
+                    vlan={rec.body.vlan}
+                    vlans={this.state.vlanData}
+                    handleEdit={this.editIP}
+                    handleDelete={this.removeIP}
+                />
+            )
+          }
         </div>
     );
   }

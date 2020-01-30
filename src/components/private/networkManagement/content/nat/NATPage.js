@@ -24,14 +24,21 @@ class NATPage extends Component {
       this.updateNATlist();
     });
   };
+
   componentDidMount() {
     this.updateHostlist();
     this.updateIPlist();
     this.updateNATlist();
   }
 
+  // componentWillUnmount(){
+  //   this._updateNats;
+  //   this._updateHosts.cancel();
+  //   this._updateIps.cancel();
+  // }
+
   updateNATlist = () => {
-    database.ref('nat').once('value').then(snap => {
+    this._updateNats = database.ref('nat').once('value').then(snap => {
       if(snap.val() != null && snap.val() !== undefined){
         let result = Object.entries(snap.val())
         .filter(el => el[1].owner === this.props.user.sub)
@@ -46,7 +53,7 @@ class NATPage extends Component {
   };
 
   updateHostlist = () => {
-    database.ref('host').once('value').then(snap => {
+    this._updateHosts = database.ref('host').once('value').then(snap => {
       if(snap.val() != null && snap.val() !== undefined){
         let result = Object.entries(snap.val())
         .filter(el => el[1].owner === this.props.user.sub)
@@ -61,7 +68,7 @@ class NATPage extends Component {
   };
 
   updateIPlist = () => {
-    database.ref('ip').once('value').then(snap => {
+    this._updateIps = database.ref('ip').once('value').then(snap => {
       if(snap.val() != null && snap.val() !== undefined){
         let result = Object.entries(snap.val())
         .filter(el => el[1].owner === this.props.user.sub)

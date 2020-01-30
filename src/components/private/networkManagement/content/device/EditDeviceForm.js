@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "./DevicePage.css";
+import "./DevicePage.css"
 
 class EditDeviceForm extends Component {
 

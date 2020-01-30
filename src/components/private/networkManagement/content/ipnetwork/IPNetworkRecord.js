@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import "./DevicePage.css"
-import EditDeviceForm from "./EditDeviceForm";
+import './IPNetworkPage.css'
+import EditIPForm from "./EditIPForm";
 
-class DeviceRecord extends Component {
+class IPNetworkRecord extends Component {
 
   state = {
     showEdit: false,
@@ -33,20 +33,20 @@ class DeviceRecord extends Component {
   };
 
   render() {
-    let {id, ip, name, description} = this.props;
+    let {id, ip, description, vlan, vlans} = this.props;
     return (
         <>
           <div>
             <div className="showDiv">{ip}</div>
-            <div className="showDiv">{name}</div>
             <div className="showDiv">{description}</div>
+            <div className="showDiv">{vlans.filter(rec => rec.id === vlan)[0].body.description}</div>
             <div className="changes">
               <button onClick={() => this.handleClickAction('edit')}>edit</button>
               <button onClick={() => this.handleClickAction('delete')}>delete</button>
             </div>
           </div>
           <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
-            <EditDeviceForm handleSaveEditedRec={this.handleSaveEditedRec} {...this.props}/>
+            <EditIPForm handleSaveEditedRec={this.handleSaveEditedRec} {...this.props}/>
           </div>
           <div hidden={!this.state.showDeleteConf} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
             <button onClick={() => this.handleClickAction('delete')}>Anuluj</button>
@@ -57,5 +57,5 @@ class DeviceRecord extends Component {
   }
 }
 
-export default DeviceRecord;
+export default IPNetworkRecord;
 
