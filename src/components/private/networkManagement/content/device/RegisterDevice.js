@@ -1,6 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useAuth0 } from "../../../../../auth/react-auth0-spa";
-import {Link} from "react-router-dom";
 import "./DevicePage.css"
 
 const RegisterDevice = (props) => {
@@ -17,21 +16,26 @@ const RegisterDevice = (props) => {
   };
 
   return (
+<<<<<<< HEAD
     <form onSubmit={handleSubmit}  style={{marginBottom: "1%"}}>
       <div class="showDiv">
+=======
+    <form onSubmit={handleSubmit}>
+      <div className="showDiv">
+>>>>>>> bcca3cc789d0ff40b2a8734136d79840ad2c971c
         <label htmlFor="ip">Adres IP</label>
-        <input class="inputAdd" id="ip" name="ip" type="text" />
+        <input className="inputAdd" id="ip" name="ip" type="text" />
         </div>
-        <div class="showDiv">
+        <div className="showDiv">
         <label htmlFor="name">Nazwa urządzenia</label>
-        <input class="inputAdd" id="name" name="name" type="text" />
+        <input className="inputAdd" id="name" name="name" type="text" />
         </div>
-        <div class="showDiv">
+        <div className="showDiv">
         <label htmlFor="description">Opis urządzenia</label>
-        <input class="inputAdd" id="description" name="description" type="text" />
+        <input className="inputAdd" id="description" name="description" type="text" />
         </div>
         <input hidden name="owner" defaultValue={user.sub} />
-        <div class="buttonDiv">
+        <div className="buttonDiv">
         <button>Dodaj</button>
         </div>
     </form>
