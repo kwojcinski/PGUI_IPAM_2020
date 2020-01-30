@@ -37,4 +37,7 @@
 .record {
     background-color: lightgrey;
     border-radius: 5px;
+    width: 70%;
+    padding: 5px;
+    margin: 20px auto;
 }
