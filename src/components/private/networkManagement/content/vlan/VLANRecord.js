@@ -36,20 +36,20 @@ class VLANRecord extends Component {
     let {id, description, owner} = this.props;
     return (<>
       <div className='record'>
-        <div>
+        <div style={{marginBottom: '0.5%', paddingTop: '0.5%', paddingBottom: '0.5%'}}>
           <div className="showDiv">{description}</div>
           <div className="changes">
             <button onClick={() => this.handleClickAction('edit')}>Edit</button>
             <button onClick={() => this.handleClickAction('delete')}>Delete</button>
           </div>
         </div>
-        <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
+        <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
           <EditVLANForm handleSaveEditedRec={this.handleSaveEditedRec}
                         cancel={() => this.handleClickAction('edit')}
                         {...this.props}/>
         </div>
         <div hidden={!this.state.showDeleteConf}
-             style={{width: '60%', margin: "auto", backgroundColor: 'grey'}}>
+             style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
           <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
           <button onClick={() => this.props.handleDelete(id)}>Confirm</button>
         </div>
