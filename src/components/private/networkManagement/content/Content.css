@@ -34,10 +34,40 @@
     border-radius: 2em;
 }
 
+.buttonDiv button{
+    border-radius: 1em;
+    width: 100px;
+}
+
+
 .record {
     background-color: lightgrey;
     border-radius: 5px;
     width: 70%;
     padding: 5px;
     margin: 20px auto;
+}
+
+.record div button, .record form button {
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 0.5em;
+}
+
+.showDiv input {
+    height: 2em;
+    border-radius: 0.5em;
+}
+
+
+.changes button {
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 0.5em;
+}
+
+.delete-confirm {
+    padding-top: 10px;
 }

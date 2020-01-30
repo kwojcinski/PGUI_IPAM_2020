@@ -38,10 +38,10 @@ class IPNetworkRecord extends Component {
     vlanName = vlanName === undefined ? 'Brak' : vlanName.body.description;
     return (
         <div className='record'>
-          <div style={{marginBottom: '0.5%', paddingTop: '0.5%', paddingBottom: '0.5%'}}>
-            <div className="showDiv">{ip}</div>
-            <div className="showDiv">{description}</div>
-            <div className="showDiv">{vlanName}</div>
+          <div style={{ paddingTop: '0.5%', paddingBottom: '0.5%'}}>
+            <div className="showDiv-ip">{ip}</div>
+            <div className="showDiv-ip">{description}</div>
+            <div className="showDiv-ip">{vlanName}</div>
             <div className="changes">
               <button onClick={() => this.handleClickAction('edit')}>Edit</button>
               <button onClick={() => this.handleClickAction('delete')}>Delete</button>
@@ -53,6 +53,7 @@ class IPNetworkRecord extends Component {
                         {...this.props}/>
           </div>
           <div hidden={!this.state.showDeleteConf} style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
+            <h3 className='delete-confirm'>Are you sure you want to delete?</h3>
             <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
             <button onClick={() => this.props.handleDelete(id)}>Confirm</button>
           </div>

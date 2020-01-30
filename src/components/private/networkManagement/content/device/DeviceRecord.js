@@ -36,21 +36,24 @@ class DeviceRecord extends Component {
     let {id, ip, name, description} = this.props;
     return (
         <div className='record'>
-          <div style={{marginBottom: '0.5%', paddingTop: '0.5%', paddingBottom: '0.5%'}}>
-            <div className="showDiv">{ip}</div>
-            <div className="showDiv">{name}</div>
-            <div className="showDiv">{description}</div>
-            <div className="changes">
+          <div style={{paddingTop: '0.5%', paddingBottom: '0.5%'}}>
+            <div className="showDiv-host">{ip}</div>
+            <div className="showDiv-host">{name}</div>
+            <div className="showDiv-host">{description}</div>
+            <div className="changes-host">
               <button onClick={() => this.handleClickAction('edit')}>Edit</button>
               <button onClick={() => this.handleClickAction('delete')}>Delete</button>
             </div>
           </div>
-          <div hidden={!this.state.showEdit} style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
+          <div hidden={!this.state.showEdit}
+               style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
             <EditDeviceForm handleSaveEditedRec={this.handleSaveEditedRec}
                             cancel={() => this.handleClickAction('edit')}
                             {...this.props}/>
           </div>
-          <div hidden={!this.state.showDeleteConf} style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
+          <div hidden={!this.state.showDeleteConf}
+               style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
+            <h3 className='delete-confirm'>Are you sure you want to delete?</h3>
             <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
             <button onClick={() => this.props.handleDelete(id)}>Confirm</button>
           </div>

@@ -1,18 +1,41 @@
-.showDiv {
+.showDiv-host {
     display: inline-grid;
-    width: 30%;
+    width: 25%;
 }
 
-.buttonDiv {
+.buttonDiv-host {
     display: inline-grid;
     vertical-align: bottom;
     margin-left: 1%;
+    border-radius: 1em;
 }
-.changes {
+
+.buttonDiv-host button{
+    border-radius: 1em;
+    width: 100px;
+}
+
+.changes-host {
     display: inline;
 }
 
-.inputAdd{
+.inputAdd-host{
     width: 50%;
     margin: 0 auto;
 }
+
+.changes-host button {
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 0.5em;
+
+}
+
+.showDiv-host input {
+    height: 2em;
+    border-radius: 0.5em;
+}
+
+
+

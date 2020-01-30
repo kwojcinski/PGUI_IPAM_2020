@@ -40,7 +40,7 @@ class NATRecord extends Component {
     ipName = ipName === undefined ? 'Brak' : ipName.body.ip;
     return (
         <div className='record'>
-          <div style={{marginBottom: '0.5%', paddingTop: '0.5%', paddingBottom: '0.5%'}}>
+          <div style={{paddingTop: '0.5%', paddingBottom: '0.5%'}}>
             <div className="showNatDiv">{name}</div>
             <div className="showNatDiv">{devName}</div>
             <div className="showNatDiv">{description}</div>
@@ -58,6 +58,7 @@ class NATRecord extends Component {
           </div>
           <div hidden={!this.state.showDeleteConf}
                style={{width: '60%', margin: "auto", backgroundColor: 'white', borderRadius: '5px'}}>
+            <h3 className='delete-confirm'>Are you sure you want to delete?</h3>
             <button onClick={() => this.handleClickAction('delete')}>Cancel</button>
             <button onClick={() => this.props.handleDelete(id)}>Confirm</button>
           </div>

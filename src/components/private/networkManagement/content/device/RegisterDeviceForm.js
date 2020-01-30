@@ -18,20 +18,20 @@ const RegisterDeviceForm = (props) => {
 
   return (
       <form className='new-form' onSubmit={handleSubmit} style={{marginBottom: "1%"}}>
-        <div className="showDiv">
+        <div className="showDiv-host">
           <label htmlFor="ip">IP Address</label>
           <input className="inputAdd" id="ip" name="ip" type="text"/>
         </div>
-        <div className="showDiv">
+        <div className="showDiv-host">
           <label htmlFor="name">Host name</label>
           <input className="inputAdd" id="name" name="name" type="text"/>
         </div>
-        <div className="showDiv">
+        <div className="showDiv-host">
           <label htmlFor="description">Host description</label>
           <input className="inputAdd" id="description" name="description" type="text"/>
         </div>
         <input hidden name="owner" defaultValue={user.sub}/>
-        <div className="buttonDiv">
+        <div className="buttonDiv-host">
           <button>Add</button>
         </div>
       </form>
