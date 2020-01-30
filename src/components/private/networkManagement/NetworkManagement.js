@@ -14,7 +14,7 @@ const NetworkManagement = () => {
   return (
       <Fragment>
         <Menu/>
-        <Content/>
+        <Content user={user}/>
       </Fragment>
   );
 };

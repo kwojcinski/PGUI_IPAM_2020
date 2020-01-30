@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import RegisterDevice from "./RegisterDevice";
 import database from "../../../../../utils/database";
+import {useAuth0} from "../../../../../auth/react-auth0-spa";
 
 class DevicePage extends Component {
-
 
   constructor(props) {
     super(props);
@@ -24,6 +24,9 @@ class DevicePage extends Component {
   }
 
   updateHostList = () => {
+
+    console.info(this.props.user);
+
     database.ref('host').once('value').then(snap => {
       if (snap.val() != null && snap.val() !== undefined) {
         let result = Object.entries(snap.val()).map(el => (
