@@ -12,9 +12,9 @@ const Content = (props) => {
       <article className='content'>
         <PrivateRoute exact path="/network" component={() => <ProfileData user={props.user} />}/>
         <PrivateRoute exact path="/network/Device" component={() => <DevicePage user={props.user}/>} />
-        <PrivateRoute exact path="/network/VLAN" component={VLANPage}/>
-        <PrivateRoute exact path="/network/IP" component={IPNetworkPage}/>
-        <PrivateRoute exact path="/network/NAT" component={NATPage}/>
+        <PrivateRoute exact path="/network/VLAN" component={() => <VLANPage user={props.user}/>}/>
+        <PrivateRoute exact path="/network/IP" component={() => <IPNetworkPage user={props.user}/>}/>
+        <PrivateRoute exact path="/network/NAT" component={() => <NATPage user={props.user}/>}/>
       </article>
   );
 };

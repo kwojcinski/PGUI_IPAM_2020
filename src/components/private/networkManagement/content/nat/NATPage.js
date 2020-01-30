@@ -33,9 +33,11 @@ class NATPage extends Component {
   updateNATlist = () => {
     database.ref('nat').once('value').then(snap => {
       if(snap.val() != null && snap.val() !== undefined){
-      let result = Object.entries(snap.val()).map(el => (
-          {id: el[0], body: el[1]}
-      ));
+        let result = Object.entries(snap.val())
+        .filter(el => el[1].owner === this.props.user.sub)
+        .map(el => (
+                    {id: el[0], body: el[1]}
+                ));
       this.setState({
         data: result
       });
@@ -46,9 +48,11 @@ class NATPage extends Component {
   updateHostlist = () => {
     database.ref('host').once('value').then(snap => {
       if(snap.val() != null && snap.val() !== undefined){
-      let result = Object.entries(snap.val()).map(el => (
-          {id: el[0], body: el[1]}
-      ));
+        let result = Object.entries(snap.val())
+        .filter(el => el[1].owner === this.props.user.sub)
+        .map(el => (
+                    {id: el[0], body: el[1]}
+                ));
       this.setState({
         hostData: result
       });
@@ -59,9 +63,11 @@ class NATPage extends Component {
   updateIPlist = () => {
     database.ref('ip').once('value').then(snap => {
       if(snap.val() != null && snap.val() !== undefined){
-      let result = Object.entries(snap.val()).map(el => (
-          {id: el[0], body: el[1]}
-      ));
+        let result = Object.entries(snap.val())
+        .filter(el => el[1].owner === this.props.user.sub)
+        .map(el => (
+                    {id: el[0], body: el[1]}
+                ));
       this.setState({
         ipData: result
       });
@@ -74,7 +80,7 @@ class NATPage extends Component {
     if (this.state.hostData.length > 0 && this.state.ipData.length > 0) {
       button = <DefineNAT handleSubmit={this.addNewNAT} ipData={this.state.ipData} hostData={this.state.hostData}/>
     } else {
-      button = "";
+      button = <div>Dodaj urządzenia i sieci IP</div>;
     }
     return (
         <div>
