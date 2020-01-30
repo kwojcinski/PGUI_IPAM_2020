@@ -1,20 +1,21 @@
 import React, {Fragment} from "react";
+import './ProfilePage.css'
 
 const ProfilePAge = props => {
   let {user} = props;
   return (
       <Fragment>
-        <div >
+        <div className='profile-title'>
           Managing user profile: {props.user.email}
         </div>
-        <div style={{display: "inline"}}>
-          <img src={user.picture} alt="NetworkManagment" height='50px' width='50px'/>
+
+        <div className='profile-user-data'>
+          <img src={user.picture} alt="NetworkManagment" height='200px' width='200px'/>
           <div>
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
+            <h2>Imię i nazwisko: {user.name}</h2>
+            <p>Email: {user.email}</p>
           </div>
         </div>
-        <code>{JSON.stringify(user, null, 2)}</code>
       </Fragment>
   );
 };

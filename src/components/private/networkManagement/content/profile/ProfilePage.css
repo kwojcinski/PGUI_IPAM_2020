@@ -1,0 +1,30 @@
+.profile-title{
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 1em;
+    width: 500px;
+    font-size: 30px;
+    background-color: lightgrey;
+    opacity: 0.9;
+}
+
+.profile-user-data{
+    display: flex;
+    width: 700px !important;
+    height: 200px !important;
+    margin: 100px auto;
+    background-color: lightgrey;
+    opacity: 0.9;
+}
+
+.profile-user-data img {
+    float: left;
+}
+
+.profile-user-data div {
+    float: left;
+    text-align: center;
+    justify-items: center;
+    padding: 20px;
+    /*margin-left: 50px;*/
+}
